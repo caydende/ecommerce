@@ -1,0 +1,24 @@
+.nav-active{
+    color: #BE7B3D;
+}
+.main-color-bg{
+    background-color: #8B5E35;
+}
+.navbar-shadow{
+    box-shadow: 1px -4px 20px 0px #8B5E35;
+}
+
+.hover-nav li{
+    color: #9D9DAA;
+    transition:all 0.5s;
+    -webkit-transition:all 0.5s;
+    -moz-transition:all 0.5s;
+    -ms-transition:all 0.5s;
+    -o-transition:all 0.5s;
+}
+.hover-nav li:hover {
+    color:#8B5E35;
+}
+.border-c{
+    border-color: #8B5E35;
+}

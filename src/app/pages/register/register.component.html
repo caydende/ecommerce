@@ -1,0 +1,307 @@
+<section class="md:grid md:grid-cols-2 md:grid-flow-row ">
+  <div class="m-14 text-start">
+    <div class="flex flex-col align-content-start mb-2">
+      <h2 class="text-[32px] font-semibold main-txt">Create a Account</h2>
+      <p class="sec-txt text-[18px]">Create a new account</p>
+    </div>
+
+    <form
+      [formGroup]="register"
+      (ngSubmit)="submitForm()"
+      class="rounded-lg main-txt"
+    >
+      <div class="mb-2">
+        <label
+          for="name"
+          [ngClass]="{
+            'text-gray-900 ':
+              !register.get('name')?.errors || !register.get('name')?.touched,
+            ' ': register.get('name')?.errors && register.get('name')?.touched,
+            shake: shakeFields['name'],
+            colored: colorFields['name']
+          }"
+          class="block mb-2 text-[18px] font-medium"
+        >
+          User Name
+        </label>
+        <div
+          class="relative shake-wrapper"
+          [ngClass]="{ shake: shakeFields['name'] }"
+        >
+          <input
+            formControlName="name"
+            type="text"
+            id="name"
+            placeholder="Ahmed"
+            (blur)="checkError('name')"
+            [ngClass]="{
+              'bg-transparent text-gray-900':
+                !register.get('name')?.errors || !register.get('name')?.touched,
+              'bg-red-50 ':
+                register.get('name')?.errors && register.get('name')?.touched
+            }"
+            class="text-[18px] rounded-lg block w-full placeholder:text-[15px] p-2.5 border-0 focus:ring-0"
+          />
+        </div>
+
+        @if(register.get('name')?.getError('required') &&
+        register.get('name')?.touched ){
+        {{ wrongInput("name", "Name is required!") }}
+        } @if(register.get('name')?.getError('minlength') &&
+        register.get('name')?.touched ){
+        {{ wrongInput("name", "Minimum length is 3!") }}
+        } @if(register.get('name')?.getError('maxlength') &&
+        register.get('name')?.touched ){
+        {{ wrongInput("name", "Maximum length is 20!") }}
+        }
+      </div>
+
+      <div class="mb-2">
+        <label
+          for="email"
+          [ngClass]="{
+            'text-gray-900 ':
+              !register.get('email')?.errors || !register.get('email')?.touched,
+            'text-red-700 ':
+              register.get('email')?.errors && register.get('email')?.touched,
+            shake: shakeFields['email'],
+            colored: colorFields['email']
+          }"
+          class="block mb-2 text-[18px] font-medium"
+        >
+          E-mail
+        </label>
+
+        <div
+          class="relative shake-wrapper"
+          [ngClass]="{ shake: shakeFields['email'] }"
+        >
+          <i
+            class="main-color fa-regular fa-envelope w-[20px] h-[16px] absolute left-3 top-[53%] transform -translate-y-1/2 text-gray-500"
+          ></i>
+          <input
+            formControlName="email"
+            type="text"
+            id="email"
+            placeholder="Ahmed@gmail.com"
+            (blur)="checkError('email')"
+            [ngClass]="{
+              'bg-transparent text-gray-900':
+                !register.get('email')?.errors ||
+                !register.get('email')?.touched,
+              'bg-red-50 ':
+                register.get('email')?.errors && register.get('email')?.touched
+            }"
+            class="text-[18px] rounded-lg block w-full placeholder:text-[15px] p-2.5 pl-10 border-0 focus:ring-0"
+          />
+        </div>
+
+        @if(register.get('email')?.getError('required') &&
+        register.get('email')?.touched ){
+        {{ wrongInput("email", "E-mail is required!") }}
+        } @if(register.get('email')?.getError('email') &&
+        register.get('email')?.touched ){
+        {{ wrongInput("email", "Enter a valid Email!") }}
+
+        }
+      </div>
+
+      <div class="mb-2">
+        <label
+          for="phone"
+          [ngClass]="{
+            'text-gray-900':
+              !register.get('phone')?.errors || !register.get('phone')?.touched,
+            'text-red-700 ':
+              register.get('phone')?.errors && register.get('phone')?.touched,
+            shake: shakeFields['phone'],
+            colored: colorFields['phone']
+          }"
+          class="block mb-2 text-[18px] font-medium"
+        >
+          Phone Number
+        </label>
+        <div
+          class="relative shake-wrapper"
+          [ngClass]="{ shake: shakeFields['phone'] }"
+        >
+          <i
+            class="main-color fa-solid fa-phone w-[20px] h-[16px] absolute left-3 top-[53%] transform -translate-y-1/2 text-gray-500"
+          ></i>
+          <input
+            formControlName="phone"
+            type="tel"
+            id="phone"
+            placeholder="01XXXXXXXXX"
+            (blur)="checkError('phone')"
+            [ngClass]="{
+              'bg-transparent   text-gray-900 ':
+                !register.get('phone')?.errors ||
+                !register.get('phone')?.touched,
+              'bg-red-50   ':
+                register.get('phone')?.errors && register.get('phone')?.touched
+            }"
+            class="text-[18px] rounded-lg block w-full placeholder:text-[15px] p-2.5 pl-10 border-0 focus:ring-0"
+          />
+        </div>
+        @if(register.get('phone')?.getError('required') &&
+        register.get('phone')?.touched ){
+        {{ wrongInput("phone", "Number is required!!") }}
+
+        } @if(register.get('phone')?.getError('pattern') &&
+        register.get('phone')?.touched ){
+        {{ wrongInput("phone", "Enter a valid phone number!") }}
+
+        }
+      </div>
+      <div class="mb-2">
+        <label
+          for="repassword"
+          [ngClass]="{
+                        'text-gray-900 ': !register.get('rePassword')?.errors || !register.get('rePassword')?.touched,'shake': shakeFields['rePassword'], 'colored': colorFields['rePassword'],
+                        'text-red-700 ': register.get('rePassword')?.errors && register.get('rePassword')?.touched,
+                    }"
+          class="block mb-2 text-[18px] font-medium"
+        >
+          Confirm Password
+        </label>
+        <div
+          class="relative shake-wrapper"
+          [ngClass]="{ shake: shakeFields['rePassword'] }"
+        >
+          <i
+            class="main-color fa-solid fa-lock w-[20px] h-[16px] absolute left-3 top-[53%] transform -translate-y-1/2 text-gray-500"
+          ></i>
+          <input
+            formControlName="rePassword"
+            type="password"
+            id="repassword"
+            placeholder="Confirm-Password"
+            (blur)="checkError('rePassword')"
+            [ngClass]="{
+              'bg-transparent   text-gray-900':
+                !register.get('rePassword')?.errors ||
+                !register.get('rePassword')?.touched,
+              'bg-red-50 ':
+                register.get('rePassword')?.errors &&
+                register.get('rePassword')?.touched
+            }"
+            class="text-[18px] rounded-lg block w-full placeholder:text-[15px] p-2.5 border-0 pl-10 focus:ring-0"
+          />
+        </div>
+
+        @if(register.get('rePassword')?.getError('required') &&
+        register.get('rePassword')?.touched ){
+        {{ wrongInput("rePassword", "Confirm-Password is required!") }}
+
+        } @if(register.getError('mismatch') &&
+        register.get('rePassword')?.touched ){
+        {{ wrongInput("rePassword", "Password does not match!") }}
+        }
+      </div>
+
+      <div class="mb-2">
+        <label
+          for="password"
+          [ngClass]="{
+            'text-gray-900 ':
+              !register.get('password')?.errors ||
+              !register.get('password')?.touched,
+            'text-red-700 ':
+              register.get('password')?.errors &&
+              register.get('password')?.touched,
+            shake: shakeFields['password'],
+            colored: colorFields['password']
+          }"
+          class="block mb-2 text-[18px] font-medium"
+        >
+          Password
+        </label>
+        <div
+          class="relative shake-wrapper"
+          [ngClass]="{ shake: shakeFields['password'] }"
+        >
+          <i
+            class="main-color fa-solid fa-lock w-[20px] h-[16px] absolute left-3 top-[53%] transform -translate-y-1/2 text-gray-500"
+          ></i>
+          <input
+            formControlName="password"
+            type="password"
+            id="password"
+            placeholder="Password"
+            (blur)="checkError('password')"
+            [ngClass]="{
+              'bg-transparent  text-gray-900  ':
+                !register.get('password')?.errors ||
+                !register.get('password')?.touched,
+              'bg-red-50   ':
+                register.get('password')?.errors &&
+                register.get('password')?.touched
+            }"
+            class="text-[18px] rounded-lg block w-full placeholder:text-[15px] p-2.5 pl-10 border-0 focus:ring-0"
+          />
+        </div>
+        @if(register.get('password')?.getError('required') &&
+        register.get('password')?.touched ){
+        {{ wrongInput("password", "Password is required!!") }}
+
+        }
+
+        <div class="main-color">
+          <p class="mt-2 text-[15px] 0">Password should have at least:</p>
+          <ul class="ms-5">
+            <li><p class="mt-2 text-xs">8 Characters</p></li>
+            <li><p class="mt-2 text-xs">1 Uppercase letter</p></li>
+            <li><p class="mt-2 text-xs">1 Lowercase letter</p></li>
+            <li><p class="mt-2 text-xs">1 Number</p></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <button
+          type="submit"
+          class="text-white hover:bg-white hover:text-[#8B5E35] border-[#8B5E35] transition-all duration-[500ms] border-2 main-color-bg block font-medium rounded-full text-[20px] w-full py-3 text-center"
+        >
+          Sign Up
+        </button>
+        <p class="font-medium text-center sec-txt mt-7">
+          Already have an account?
+          <a routerLink="/login" class="main-color underline">Log In</a>
+        </p>
+      </div>
+    </form>
+  </div>
+  <swiper-container
+    style="--swiper-navigation-color: #8B5E35; --swiper-pagination-color: #8B5E35;--swiper-navigation-size: 32px"
+    class="mySwiper flex flex-col align-items-center "
+    speed="600"
+    parallax="true"
+    pagination="true"
+    pagination-clickable="true"
+    navigation="true"
+  >
+    <div
+      slot="container-start"
+      class="parallax-bg bg-img"
+
+      data-swiper-parallax="-23%"
+    ></div>
+
+    <swiper-slide >
+      <h4 class=" font-bold text-[32px] mb-3" data-swiper-parallax="-300">Welcome to Trendify</h4>
+      <h5 class=" leading-6 text-xl font-medium mb-32 lg:mx-24 md:mx-12" data-swiper-parallax="-200">Discover the latest trends, express your unique style.</h5>
+
+    </swiper-slide>
+    <swiper-slide >
+        <h4 class=" font-bold text-[32px] mb-3" data-swiper-parallax="-300">Welcome to Trendify 2</h4>
+        <h5 class=" leading-6 text-xl font-medium mb-32 lg:mx-24 md:mx-12" data-swiper-parallax="-200">Discover the latest trends, express your unique style.</h5>
+  
+      </swiper-slide>
+      <swiper-slide >
+        <h4 class=" font-bold text-[32px] mb-3" data-swiper-parallax="-300">Welcome to Trendify 3</h4>
+        <h5 class=" leading-6 text-xl font-medium mb-32 lg:mx-24 md:mx-12" data-swiper-parallax="-200">Discover the latest trends, express your unique style.</h5>
+  
+      </swiper-slide>
+  </swiper-container>
+</section>

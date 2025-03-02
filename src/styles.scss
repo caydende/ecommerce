@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'ngx-toastr/toastr';
+@import 'swiper/swiper-bundle.css';
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.nav-title {
+    font-family: 'Hedvig Letters Serif', serif;
+    color:#8B5E35 ;
+}
+.sans{
+    font-family: 'Hedvig Letters Serif', serif;
+}
+
+
+.bg-main , html{
+    background-color: #F6F6F6;
+}
+
+.main-color{
+    color: #8B5E35;
+}
+.sec-color-bg{
+  background-color: #9e7854a8;
+}
+.main-color-bg{
+    background-color: #8B5E35;
+}
+.main-txt{
+    color: #090F41;
+}
+.sec-txt{
+    color: #9D9DAA;
+}
+

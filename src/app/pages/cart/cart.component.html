@@ -1,0 +1,28 @@
+<section class="container bg-slate-300 flex flex-col">
+    <h1 class="capitalize text-6xl pb-10">shoping cart</h1>
+    <span class="text-xl">Total Cart Price: {{cartDetails.totalCartPrice | currency:"EGP"}}</span>
+    <button (click)="showAlert('Clear cart!' , 'Your cart is cleared!' , false , '')" class="font-medium bg-red-700 py-2 me-auto m-3 ms-4     px-4 rounded-lg block w-[120px] text-slate-100">Clear cart</button>
+    @for(product of cartDetails.products ;track product._id ){
+        <div class="grid md:grid-cols-[10%_minmax(0,1fr)] border-b border-red-700 py-2">
+
+            <div class="">
+                <img [src]="product.product.imageCover" class="w-full h-[130px]  object-contain " [alt]="product.product.title">
+            </div>
+            <div class="flex justify-between items-center">
+                <div class="capitalize text-start ">
+                    <h3 class="">{{product.product.title}}</h3>
+                    <h3>price : {{product.price | currency : "EGP"}}</h3>
+                    <button (click)="showAlert('Remove item!' , 'The item is removed!' , true , product.product._id)" class="text-red-600"><i class="fas fa-trash-can "></i> Remove</button>
+        
+                </div>
+                <div class="flex gap-3 text-lg p-5">
+                    <button (click)="updateQuantity(product.count +1 , product.product.id, 'increased')"><i class="fa-regular fa-square-plus text-green-600"></i></button>
+                    <span>{{product.count}}</span>
+                    <button (click)="updateQuantity(product.count -1 , product.product.id , 'decreased')"><i class="fa-regular fa-square-minus text-red-600"></i> </button>
+                </div>
+            </div>
+        
+        </div>
+    }
+    <button class="bg-emerald-500 text-slate-800 font-medium text-2xl py-3 px-5 rounded-xl m-5 ms-auto block w-[150px]"  routerLink="/checkout">CheckOut</button>
+</section>

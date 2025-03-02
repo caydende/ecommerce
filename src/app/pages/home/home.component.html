@@ -1,0 +1,315 @@
+<button (click)="getUserWishlist()">wrgwrg</button>
+<div class="flex flex-col ">
+    <div class="hero-bg  ">
+        <div class="relative h-full">
+            <div class="mx-2 md:mx-16 md:grid md:grid-cols-2 mb-20">
+                <div class="flex flex-col justify-content-center md:mt-48 mt-52 text-white text-start  mx-1 ">
+                    <div class="flex flex-col align-items-center">
+                        <h2 class="font-semibold text-4xl leading-[50px] md:text-[50px] md:leading-[75px] ">Elevate Your Home with Stylish Furniture</h2>
+                        <img class=" w-[180px] h-[29px] text-center " src="/images/Layer_1.png" alt="">
+                    </div>
+                    <p class="font-medium text-lg mt-[32px]">Explore a range of high-quality, affordable furniture designed to transform any room. Discover the perfect blend of style, comfort, and functionality for your space.</p>
+                    <button routerLink="/products" class="text-[#f9f9f9] hover:bg-[#f9f9f9] hover:text-[#8B5E35] border-[#8B5E35] transition-all duration-[500ms] border-2 main-color-bg block font-medium rounded-full text-[20px] w-[65%] py-3 text-center capitalize mt-[52px]">shop now</button>
+                    <div class="flex flex-row justify-center align-items-end ">
+                        <img  class="w-[142px]   ms-[10%] me-10" src="/images/Group.png" alt="">
+                        <div class="sans text-end self-end mb-3 relative flex flex-col ">
+
+                            <div>
+                                <div class="flex flex-row">
+                                    <span class="font-bold text-[22px] leading-[31px] me-1">4.8 | </span>
+                                    <img class=" w-[70px] h-[13px] self-center    " src="/images/Frame141.png" alt="">
+                                </div>
+                            </div>
+                                <p class="text-start text-[20px]">150k Total Review</p>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="md:mx-16 mt-24 mb-16 capitalize">
+        <owl-carousel-o [options]="customOptions" class="main-txt font-medium">
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important]  lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125  rounded-full" src="./images/heads.jpg" alt="">
+                    </div>
+                    <span class="">music</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important] lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125 rounded-full object-cover" src="./images/men-8826710_640.png" alt="">
+                    </div>
+                    <span class="">men's fashion</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important] lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125 object-cover  rounded-full" src="./images/woman.jpeg" alt="">
+                    </div>
+                    <span class="">women's fashion</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important] lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125 object-cover  rounded-full" src="./images/grocery-store-aisle.jpeg" alt="">
+                    </div>
+                    <span class="">supermarket</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important] lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125 object-cover  rounded-full" src="./images/baby.jpeg" alt="">
+                    </div>
+                    <span class="">baby and toys</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important] lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125 object-cover  rounded-full" src="./images/home.jpeg" alt="">
+                    </div>
+                    <span class="">home</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important] lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125 object-cover  rounded-full" src="./images/books.jpg" alt="">
+                    </div>
+                    <span class="">books</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important] lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125 object-cover  rounded-full" src="./images/beauty.jpeg" alt="">
+                    </div>
+                    <span class="">beauty and health</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important] lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125 object-cover  rounded-full" src="./images/iphones.jpeg" alt="">
+                    </div>
+                    <span class="">mobiles</span>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide >
+                <div class="flex flex-col items-center gap-3 ">
+                    <div class="overflow-hidden rounded-full w-[80px!important] lg:w-[120px!important] lg:h-[120px!important] flex flex-col items-center text-center">
+                    <img routerLink="/categories" class="cursor-pointer   transition-all ease-in-out w-[80px!important] h-[80px!important] lg:w-[120px!important] duration-500 lg:h-[120px!important] hover:scale-125 object-cover  rounded-full" src="./images/electronic.jpeg" alt="">
+                    </div>
+                    <span class="">electronics</span>
+                </div>
+            </ng-template>
+
+        </owl-carousel-o>
+    </div>
+    <div class=" min-h-[500px] capitalize">
+        <swiper-container
+        style="--swiper-navigation-color: #8B5E35 ; --swiper-pagination-color: #8B5E35;--swiper-navigation-size: 32px"
+        class=" mySwiper  flex-col items-start text-start justify-start"
+        speed="600"
+        parallax="true"
+        pagination="true"
+        pagination-clickable="true"
+        navigation="true">
+        <div slot="container-start" class="parallax-bg bg-img " data-swiper-parallax="-20%"></div>
+        <swiper-slide class="px-[0px!important] mt-24 lg:grid lg:grid-cols-2">
+        <div class="text-start me-auto ms-10 md:ms-24 flex flex-col items-start">
+            <h4 class=" font-semibold text-[44px] leading-[66px] mb-3" data-swiper-parallax="-300">Upgrade your Style</h4>
+            <h5 class=" leading-[48px] text-[32px] font-medium mb-8 lg:me-24 md:me-12" data-swiper-parallax="-200">up to 50% off on  all clothing and accessories!</h5>
+            <button class="capitalize py-3 px-9 hover:bg-white hover:text-[#8B5E35] border-[#8B5E35] transition-all duration-[500ms] rounded-lg main-color-bg font-normal text-xl">shop now</button>
+        </div>
+        </swiper-slide>
+        <swiper-slide class="px-[0px!important] mt-24 lg:grid lg:grid-cols-2">
+            <div class="text-start me-auto ms-10 md:ms-24 flex flex-col items-start">
+                <h4 class=" font-semibold text-[44px] leading-[66px] mb-3" data-swiper-parallax="-300">Upgrade your Style</h4>
+                <h5 class=" leading-[48px] text-[32px] font-medium mb-8 lg:me-24 md:me-12" data-swiper-parallax="-200">up to 50% off on  all clothing and accessories!</h5>
+                <button class="capitalize py-3 px-9 hover:bg-white hover:text-[#8B5E35] border-[#8B5E35] transition-all duration-[500ms] rounded-lg main-color-bg font-normal text-xl">shop now</button>
+            </div>
+        </swiper-slide>
+        <swiper-slide class="px-[0px!important] mt-24 lg:grid lg:grid-cols-2">
+            <div class="text-start me-auto ms-10 md:ms-24 flex flex-col items-start">
+                <h4 class=" font-semibold text-[44px] leading-[66px] mb-3" data-swiper-parallax="-300">Upgrade your Style</h4>
+                <h5 class=" leading-[48px] text-[32px] font-medium mb-8 lg:me-24 md:me-12" data-swiper-parallax="-200">up to 50% off on  all clothing and accessories!</h5>
+                <button class="capitalize py-3 px-9 hover:bg-white hover:text-[#8B5E35] border-[#8B5E35] transition-all duration-[500ms] rounded-lg main-color-bg font-normal text-xl">shop now</button>
+            </div>
+        </swiper-slide>
+        </swiper-container>
+    </div>
+    <div class="my-16">
+      <div>
+        <h3 class="sec-head capitalize mb-2 mx-auto">flash sale</h3>
+        <h3 class="sec-head1 capitalize mb-4 mx-auto">Grab Them Before They're Gone!</h3>
+      </div>
+
+      <div class="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mx-16">
+          @for ( prod of products.slice(0,gridcols) ; track prod.id){
+            <div class="scale-90 mx-auto card  max-w-[275px]   border-gray-200 rounded-xl shadow-lg shadow-[#c9996c] bg-white " >
+              <div class="rounded-xl overflow-hidden relative">
+                <img [routerLink]="['/details' , prod.id]" class="h-[275px] w-[275px] hover:scale-110 transition-all duration-500 ease-in-out   cursor-pointer mx-0 p-2 rounded-lg object-cover" [src]="prod.imageCover" [alt]="prod.title" />
+                <span class="text-start me-auto bottom-0 left-0 absolute text-lg font-medium  rounded-md ms-2 py-1 px-2 text-white main-color-bg z-10">-50%</span>
+              </div>
+              <div class="ps-2 px-5 pb-5">
+                  <a>
+                      <h5 class="text-start text-2xl font-medium tracking-tight main-txt">{{prod.title.split(" ", 2).join(" ")}}</h5>
+                  </a>
+                  <div class="flex items-center mb-5">
+                      <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                          @for(num of [1,2,3,4,5].slice(0 , prod.ratingsAverage) ; track $index){
+                              <span> <i class="fa-solid fa-star main-color"></i></span>
+                          }
+                          @if(halfstar(prod.ratingsAverage) ){
+                              <i class="fa-solid fa-star-half-stroke main-color "></i>
+                          }
+                      </div>
+                      <span class=" main-color text-xs font-bold px-2.5 py-0.5 rounded-sm sec-color-bg  ms-3 ">{{prod.ratingsAverage}}</span>
+                      <span class=" text-gray-300 text-xs font-semibold px-1.5 py-0.5 rounded-sm bg-transparent  ">({{prod.ratingsQuantity}})</span>
+                  </div>
+                  <div class="flex items-center justify-between text-white">
+                      <span class="text-lg font-semibold main-color ">{{prod.price | currency: 'EGP'}}  <span class="text-gray-300 line-through"> {{prod.price * 2 | currency: 'EGP'}} </span></span>
+                      <a role="button" (click)="addProductToCart(prod.id)" class="relative main-color-bg px-1.5 py-1 rounded-lg hover:text-[#8B5E35] transition-all ease-in-out duration-500 hover:scale-110 border border-[#8B5E35] hover:bg-white">
+                        @if(addToCartLoader[prod.id] === true){
+                          <span class="loader"></span>
+                        }@else {
+                          <i class="fa-solid fa-plus  w-[20px] h-[20px]"></i>
+                        }
+                        </a>
+                  </div>
+              </div>
+            </div>
+          }
+
+      </div>
+      <button class="py-3 font-medium text-lg px-10 pe-8 mt-4 capitalize border border-[#8B5E35] text-[#8B5E35] bg-white hover:bg-[#8B5E35] hover:text-white transition-all duration-500 ease-in-out  rounded-full flex mx-auto gap-2 align-center">see all <i class="fa-solid fa-angle-right text-xl m-auto font-light"></i></button>
+    </div>
+    <div class="mx-2 md:mx-16 my-16">
+      <div>
+        <h3 class="sec-head capitalize mb-2 mx-auto">new collection</h3>
+        <h3 class="sec-head1 capitalize mb-4 mx-auto">check the new collection</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 min-h-[800px] gap-5">
+        <div class="overflow-hidden rounded-xl cursor-pointer  relative ">
+          <div class="hover:scale-110 transition-all duration-500   ease-in-out text-white">
+            <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  font-semibold capitalize flex flex-col">
+              <span class="text-[50px]">shoes</span>
+              <span class="font-medium text-[32px] uppercase">up to 50%off</span>
+            </div>
+            <img src="/images/shoe.png" class=" h-[800px] object-center rounded-xl object-cover w-full" alt="">
+          </div>
+        </div>
+        <div class="flex flex-col gap-5" >
+          <div class="overflow-hidden rounded-xl cursor-pointer  relative ">
+            <div class="hover:scale-110 transition-all duration-500   ease-in-out text-white">
+              <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  font-semibold capitalize flex flex-col">
+                <span class="text-[50px]">bags</span>
+                <span class="font-medium text-[32px] uppercase">up to 50%off</span>
+              </div>
+              <img src="/images/bags.png" class=" h-[390px] object-center rounded-xl object-cover w-full" alt="">
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-xl cursor-pointer  relative ">
+            <div class="hover:scale-110 transition-all duration-500   ease-in-out text-white">
+              <div class="absolute inset-0 bg-black bg-opacity-50 rounded-xl"></div>
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  font-semibold capitalize flex flex-col">
+                <span class="text-[50px]">accessories</span>
+                <span class="font-medium text-[32px] uppercase">up to 50%off</span>
+              </div>
+              <img src="/images/accessory.png" class=" h-[390px] object-center rounded-xl object-cover w-full" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-16 flex flex-col">
+
+      <div>
+        <h3 class="sec-head capitalize mb-2 mx-auto">products</h3>
+        <h3 class="sec-head1 capitalize mb-4 mx-auto">best selling product</h3>
+      </div>
+      <div class="flex flex-row bg-[#EEEEEE] rounded-full capitalize mx-auto text-center self-center py-2 px-8 font-medium  text-[#9D9DAA]">
+        <a class="py-1.5 px-3 text-lg cursor-pointer rounded-full">all</a>
+        <a class="py-1.5 px-3 text-lg cursor-pointer rounded-full">men</a>
+        <a class="py-1.5 px-3 text-lg cursor-pointer rounded-full">women</a>
+        <a class="py-1.5 px-3 text-lg cursor-pointer rounded-full">home</a>
+        <a class="py-1.5 px-3 text-lg cursor-pointer rounded-full">books</a>
+      </div>
+      <div class="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mx-16">
+          @for ( prod of products.slice(0,12) ; track prod.id){
+            <div class="scale-90 mx-auto card  max-w-[275px]   border-gray-200 rounded-xl shadow-lg shadow-[#c9996c] bg-white " >
+              <div class="rounded-xl overflow-hidden relative">
+                @for (prodWish of userWishlist; track prodWish._id) {
+                  @if (prodWish._id === prod.id) {
+                    @if(wishCondtion[prod.id] === true){
+                      <span class="loader border-t-[#8B5E35!important] text-start w-6 h-6 top-0 right-0 absolute me-2 mt-2 ms-2 rounded-full py-1 px-2 bg-slate-100"></span>
+                    }@else  {
+                      <span class="text-start top-0 right-0 absolute me-2 mt-2 text-lg font-medium ms-2 rounded-full py-1 px-2 bg-slate-100 main-color z-10  cursor-pointer hover:scale-110 transition-all ease-in-out duration-500">
+                        <i (click)="removeFromWishlist(prod.id)" class="fa-solid fa-heart text-2xl"></i>
+                      </span>
+                  }
+                }
+                
+
+
+                @else if (!isInWishlist(prod.id) ) {
+                  @if(wishCondtion[prod.id] === true){
+                    <span class="loader border-t-[#8B5E35!important] text-start w-6 h-6 top-0 right-0 absolute me-2 mt-2 ms-2 rounded-full py-1 px-2 bg-slate-100"></span>
+                  }@else  {
+                    <span class="text-start top-0 right-0 absolute me-2 mt-2 text-lg font-medium ms-2 rounded-full py-1 px-2 bg-slate-100 main-color z-10  cursor-pointer hover:scale-110 transition-all ease-in-out duration-500">
+                      <i (click)="addToWishlist(prod.id)" class="fa-regular fa-heart text-2xl"></i>
+                    </span>
+                  }
+                }
+              }
+
+                <img [routerLink]="['/details' , prod.id]" class="h-[275px] w-[275px] hover:scale-110 transition-all duration-500 ease-in-out   cursor-pointer mx-0 p-2 rounded-lg object-cover" [src]="prod.imageCover" [alt]="prod.title" />
+                <span class="text-start me-auto bottom-0 left-0 absolute text-lg font-medium ms-2 rounded-md py-1 px-2 text-white main-color-bg z-10">-50%</span>
+              </div>
+            <div class="ps-2 px-5 pb-5">
+                <a>
+                    <h5 class="text-start text-2xl font-medium tracking-tight main-txt">{{prod.title.split(" ", 2).join(" ")}}</h5>
+                </a>
+                <div class="flex items-center mb-5">
+                    <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                        @for(num of [1,2,3,4,5].slice(0 , prod.ratingsAverage) ; track $index){
+                            <span> <i class="fa-solid fa-star main-color"></i></span>
+                        }
+                        @if(halfstar(prod.ratingsAverage) ){
+                            <i class="fa-solid fa-star-half-stroke main-color "></i>
+                        }
+                    </div>
+                    <span class=" main-color text-xs font-bold px-2.5 py-0.5 rounded-sm sec-color-bg  ms-3 ">{{prod.ratingsAverage}}</span>
+                    <span class=" text-gray-300 text-xs font-semibold px-1.5 py-0.5 rounded-sm bg-transparent  ">({{prod.ratingsQuantity}})</span>
+                </div>
+                <div class="flex items-center justify-between text-white">
+                    <span class="text-lg font-semibold main-color ">{{prod.price | currency: 'EGP'}}  <span class="text-gray-300 line-through"> {{prod.price * 2 | currency: 'EGP'}} </span></span>
+                    <a role="button" (click)="addProductToCart(prod.id)" class="relative main-color-bg px-1.5 py-1 rounded-lg hover:text-[#8B5E35] transition-all ease-in-out duration-500 hover:scale-110 border border-[#8B5E35] hover:bg-white">
+                      @if(addToCartLoader[prod.id] === true){
+                        <span class="loader"></span>
+                      }@else{
+                        <i class="fa-solid fa-plus  w-[20px] h-[20px]"></i>
+                      }
+                      </a>
+                </div>
+            </div>
+            </div>
+          }
+
+      </div>
+      <button class="py-3 font-medium text-lg px-10 pe-8 mt-4 capitalize border border-[#8B5E35] text-[#8B5E35] bg-white hover:bg-[#8B5E35] hover:text-white transition-all duration-500 ease-in-out  rounded-full flex mx-auto gap-2 align-center">see all <i class="fa-solid fa-angle-right text-xl m-auto font-light"></i></button>
+    </div>
+</div>

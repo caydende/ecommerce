@@ -1,0 +1,80 @@
+<section class="mx-28 bg-slate-500 flex flex-col mt-5 p-10 ">
+    <h1 class="capitalize text-6xl pb-10">CheckOut</h1>
+
+        <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()" class="flex flex-col" >
+            <div class=" pb-3  m-3 "  >        
+                <label for="details" 
+                    [ngClass]="{
+                        'text-gray-900 dark:text-white': !checkOutForm.get('details')?.errors || !checkOutForm.get('details')?.touched,
+                        'text-red-700 dark:text-red-700': checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched,'shake': shakeFields['details']
+                    }"
+                    class="text-start block mb-2 ms-2 text-sm font-medium   text-gray-900 dark:text-white">
+                    Details
+                </label>
+                <textarea formControlName="details" id="details" placeholder="Any details you want to add."
+                    (blur)="checkError('details')"
+                    [ngClass]="{
+                        'bg-transparent border-gray-300 text-gray-900 bg-slate-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500': !checkOutForm.get('details')?.errors || !checkOutForm.get('details')?.touched,
+                        '  border-red-700 text-red-700 bg-slate-900 placeholder-red-700 focus:ring-red-700 focus:border-red-700': checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched,
+                        'shake': shakeFields['details']
+                    }"
+                    class="text-md rounded-lg block w-full p-2.5 bg-slate-900 dark:text-white"></textarea>
+    
+    
+                    @if(checkOutForm.get('details')?.getError('required') && checkOutForm.get('details')?.touched ){
+                        <p class="mt-2 text-md text-red-600 dark:text-red-700">Details is required!</p>
+                    }
+            </div>
+            <div class=" pb-3  m-3">
+                <label for="phone" 
+                    [ngClass]="{
+                        'text-gray-900 dark:text-white': !checkOutForm.get('phone')?.errors || !checkOutForm.get('phone')?.touched,
+                        'text-red-700 dark:text-red-700': checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched,'shake': shakeFields['phone']
+                    }"
+                    class="text-start block mb-2 ms-2 text-sm font-medium  text-gray-900 dark:text-white ">
+                    Phone Number
+                </label>
+                <input formControlName="phone" type="tel" id="phone" placeholder="01XXXXXXXXX"
+                    (blur)="checkError('phone')"
+                    [ngClass]="{
+                        '  dark:bg-slate-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !checkOutForm.get('phone')?.errors || !checkOutForm.get('phone')?.touched,
+                        ' dark:bg-slate-900 border-red-700 text-red-500 placeholder-red-500 focus:ring-red-500 focus:border-red-500': checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched,
+                        'shake': shakeFields['phone']
+                    }"
+                    class="text-sm rounded-lg block w-full p-2.5  bg-slate-900 dark:text-white" />
+                    @if(checkOutForm.get('phone')?.getError('required') && checkOutForm.get('phone')?.touched ){
+                        <p class="mt-2 text-md text-red-600 dark:text-red-700">Number is required!</p>
+    
+                    }
+    
+                    @if(checkOutForm.get('phone')?.getError('pattern') && checkOutForm.get('phone')?.touched ){
+                        <p class="mt-2 text-md text-red-600 dark:text-red-700">Enter a valid phone number!</p>
+    
+                    }
+            </div>
+            <div class="pb-3  m-3  mb-6">
+                <label for="city" 
+                    [ngClass]="{
+                        'text-gray-900 dark:text-white': !checkOutForm.get('city')?.errors || !checkOutForm.get('city')?.touched,
+                        'text-red-700 dark:text-red-700': checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched,'shake': shakeFields['city']
+                    }"
+                    class="text-start block mb-2 ms-2 text-sm font-medium  text-gray-900 dark:text-white ">
+                    City
+                </label>
+                <input formControlName="city" type="text" id="city" placeholder="Please enter your city"
+                    (blur)="checkError('city')"
+                    [ngClass]="{
+                        ' dark:bg-slate-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !checkOutForm.get('city')?.errors || !checkOutForm.get('city')?.touched,
+                        ' dark:bg-slate-900 border-red-700 text-red-500 placeholder-red-500 focus:ring-red-500 focus:border-red-500': checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched,
+                        'shake': shakeFields['city']
+                    }"
+                    class="text-sm rounded-lg block w-full p-2.5 bg-slate-900 dark:text-white" />
+                    @if(checkOutForm.get('city')?.getError('required') && checkOutForm.get('city')?.touched ){
+                        <p class="mt-2 text-md text-red-600 dark:text-red-700">City is required!</p>
+    
+                    }
+            </div>
+            <button type="submit" class="block me-auto ms-3 p-5 py-3 rounded-lg font-medium bg-emerald-500"> Submit</button>
+        </form>
+
+</section>
