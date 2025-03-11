@@ -1,0 +1,87 @@
+<section class="md:mx-16 my-16 flex flex-col ">
+    <div>
+        <h3 class="sec-head capitalize mb-2 mx-auto">your orders</h3>
+        <h3 class="sec-head1 capitalize mb-4 mx-auto">all your orders!</h3>
+    </div>
+    <div class="flex flex-col text-start p-5 gap-10">
+        @for (order of orders(); track $index) {
+        <div class="flex flex-col border border-[#8B5E35]  shadow-lg shadow-[#c9996c] p-5 rounded-xl gap-3">
+            <div class="flex flex-col md:flex-row md:items-center items-start justify-between">
+                <h3 class="main-color text-3xl capitalize font-semibold">order {{$index +1 }}</h3>
+                <span class="font-medium text-lg capitalize sec-txt">order id : {{order._id}}</span>
+            </div>
+            <div class="flex flex-col main-txt font-medium gap-10">
+                <div class="border rounded-lg p-5 border-[#8B5E35] shadow-[#c9996c] flex flex-col shadow-md">
+                    <span class="font-medium text-lg capitalize">order price : <span class="font-semibold">{{order.totalOrderPrice |currency:'EGP'}} </span></span>
+                    <span class="font-medium text-lg capitalize">payment method : {{order.paymentMethodType}}</span>
+                    <span class="font-medium text-lg capitalize">address details : <span
+                            class="font-semibold">{{order.shippingAddress.city}}</span> ,
+                        {{order.shippingAddress.details}}</span>
+                    <span class="font-medium text-lg ">Email Address : <span class="text-[16px]">{{order.user.email}}</span></span>
+                    <span class="font-medium text-lg capitalize">phone number : <span class="text-[16px]">{{order.user.phone}}</span></span>
+                </div>
+                <div class="grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4   shadow-md shadow-[#c9996c] border rounded-lg  border-[#8B5E35]" >
+                    @for ( prod of order.cartItems ; track prod.product.id){
+                    <div
+                        class="scale-90 mx-auto card  max-w-[275px]   border-gray-200 rounded-xl shadow-lg shadow-[#c9996c] bg-white ">
+                        <div class="rounded-xl overflow-hidden relative">
+                            <img [routerLink]="['/details' , prod.product.id]"
+                                class="h-[275px] w-[275px] hover:scale-110 transition-all duration-500 ease-in-out   cursor-pointer mx-0 p-2 rounded-lg object-cover"
+                                [src]="prod.product.imageCover" [alt]="prod.product.title" />
+                        </div>
+                        <div class="ps-2 px-5 pb-5">
+                            <a>
+                                <h5 class="text-start text-2xl font-medium tracking-tight main-txt">{{prod.product.title.split("
+                                    ", 2).join(" ")}}</h5>
+                            </a>
+                            <div class="flex items-center mb-5">
+                                <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                                    @for(num of [1,2,3,4,5].slice(0 , prod.product.ratingsAverage) ; track $index){
+                                    <span> <i class="fa-solid fa-star main-color"></i></span>
+                                    }
+                                    @if(halfStar(prod.product.ratingsAverage) ){
+                                    <i class="fa-solid fa-star-half-stroke main-color "></i>
+                                    }
+                                </div>
+
+                                <span
+                                    class=" main-color text-xs font-bold px-2.5 py-0.5 rounded-sm sec-color-bg  ms-3 ">{{prod.product.ratingsAverage}}</span>
+                                <span
+                                    class=" text-gray-300 text-xs font-semibold px-1.5 py-0.5 rounded-sm bg-transparent  ">({{prod.product.ratingsQuantity}})</span>
+                            </div>
+                            <div class="flex items-center justify-between text-white ">
+                                <div class="flex flex-col"> 
+                                    <span class="text-lg font-semibold main-color ">{{prod.price | currency: 'EGP'}} 
+                                    </span>
+                                    <span
+                                        class="text-gray-300 line-through text-lg font-semibold"> {{prod.price * 2 | currency: 'EGP'}}
+                                    </span>
+                                </div>
+                                <span class=" text-lg font-semibold main-color capitalize">amount: {{prod.count}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                </div>
+                <div class="flex justify-between mx-12 items-center">
+                    @if(order.isPaid){
+                    <span class=" text-2xl capitalize font-semibold text-red-700">not paid</span>
+                    }@else {
+                    <span class=" text-2xl capitalize font-semibold text-green-700">paid</span>
+                    }
+                    @if(order.isDelivered){
+                    <span class=" text-2xl capitalize font-semibold text-yellow-500">delivering</span>
+                    }@else {
+                    <span class=" text-2xl capitalize font-semibold text-green-700">Delivered</span>
+                    }
+
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+    <h3 class="sec-head1 text-start capitalize">similar products</h3>
+    <app-similar-products></app-similar-products>
+</section>

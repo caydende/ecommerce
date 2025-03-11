@@ -1,6 +1,9 @@
-<div class="bg-main text-black text-center flex flex-col align-items-end">
-    <router-outlet class="align-self-start"></router-outlet>
-
+<div class="bg-main text-black text-center flex flex-col align-items-end h-screen">
+    <ngx-scrollbar appearance="thin" track="thin" style="height: 100vh; display: block;">
+        <div style="height: 100%; overflow: auto;" >
+            <router-outlet></router-outlet>
+        </div>
+    </ngx-scrollbar>
 </div>
 
-<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.9)" size = "large" color = "#fff" type = "ball-fall" [fullScreen] = "true"><p class="sec-head" > Trendify </p></ngx-spinner>

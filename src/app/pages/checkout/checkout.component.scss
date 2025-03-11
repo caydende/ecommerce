@@ -1,12 +1,22 @@
-@keyframes shakeX {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
+.colored{
+    color: rgb(184, 0, 0);
+    animation: color 1.5s ease-in-out 1.5 ;
+    -webkit-animation: color 1.5s ease-in-out 1.5 ;
 }
-
 .shake {
-    animation: shakeX 0.3s ease-in-out 1.5;
-    -webkit-animation: shakeX 0.3s ease-in-out 1.5;
+    animation: shakeX 0.3s ease-in-out 1.5 ;
+    -webkit-animation: shakeX 0.3s ease-in-out 1.5 ;
+
 }
 
+@keyframes shakeX {
+    0%, 100% { transform: translateX(0); -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); }
+    25% { transform: translateX(-5px); -webkit-transform: translateX(-5px); -moz-transform: translateX(-5px); -ms-transform: translateX(-5px); -o-transform: translateX(-5px); }
+    50% { transform: translateX(5px); -webkit-transform: translateX(5px); -moz-transform: translateX(5px); -ms-transform: translateX(5px); -o-transform: translateX(5px); }
+    75% { transform: translateX(-5px); -webkit-transform: translateX(-5px); -moz-transform: translateX(-5px); -ms-transform: translateX(-5px); -o-transform: translateX(-5px); }
+}
+
+@keyframes color {
+    0%{    color: rgb(184, 0, 0)}
+    100%{color: #090F41;}
+}

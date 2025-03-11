@@ -9,12 +9,12 @@
             <div class="mb-4">
                 <label for="email" [ngClass]="{
             'main-txt  ':
-              !login.get('email')?.errors || !login.get('email')?.touched,
+                !login.get('email')?.errors || !login.get('email')?.touched,
             'text-red-700 ':
-              login.get('email')?.errors && login.get('email')?.touched,
+                login.get('email')?.errors && login.get('email')?.touched,
             shake: shakeFields['email'],
             colored: colorFields['email']
-          }" class="block mb-2 text-[18px] font-medium">
+            }" class="block mb-2 text-[18px] font-medium">
                     E-mail
                 </label>
 

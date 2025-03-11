@@ -36,7 +36,7 @@
               "node_modules/owl.carousel/dist/assets/owl.carousel.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.css",
               "node_modules/swiper/swiper-bundle.min.css",
-              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
+              "node_modules/ngx-spinner/animations/ball-fall.css",
               "src/styles.scss",
               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
               ],

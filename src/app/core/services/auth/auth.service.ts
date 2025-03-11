@@ -1,6 +1,6 @@
 import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, WritableSignal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { jwtDecode } from "jwt-decode";
 import { Router } from '@angular/router';
@@ -28,6 +28,7 @@ export class AuthService {
   saveUserData():any{
     if(localStorage.getItem("authToken") !== null){
     this.userData =   jwtDecode(localStorage.getItem("authToken") !)
+    localStorage.setItem('userId', this.userData.id)
     }
   }
 

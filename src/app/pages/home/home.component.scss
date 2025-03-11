@@ -1,16 +1,4 @@
-.add-button{
-    transform: scale(0%);
-    -webkit-transform: scale(0%);
-    -moz-transform: scale(0%);
-    -ms-transform: scale(0%);
-    -o-transform: scale(0%);
-    opacity: 0;
-    transition: all 0.2s ease-in;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -ms-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-}
+
 .hero-bg{
     background-image:   url(/images/hero.png) ;
     background-position: center;
@@ -75,7 +63,10 @@ swiper-container {
     line-height: 1.3;
   }
 
-
+  .testmonial-swiper swiper-slide{
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 
 .card:hover .add-button{
     opacity: 1;
@@ -96,34 +87,24 @@ swiper-container {
 .main-color{
   color: #8B5E35;
 }
-.loader {
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-  display: inline-block;
-  border-top: 3px solid #FFF;
-  border-right: 3px solid transparent;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
 
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
+
 .shadow-img{
   box-shadow: inset 0px 0px 200px 3px rgba(0,0,0,0.65);
   -webkit-box-shadow: inset 0px 0px 200px 3px rgba(0,0,0,0.65);
   -moz-box-shadow: inset 0px 0px 200px 3px rgba(0,0,0,0.65);
 }
 
+
 .sec-head1{
   font-weight: 600;
   font-size: 40px;
   line-height: 60px;
   color: #090F41;
+}
+
+.bg-img-2{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.562), rgba(0, 0, 0, 0.199)), url(/images/2nd-bg.png) ;
+
 }

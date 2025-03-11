@@ -1,80 +1,213 @@
-<section class="mx-28 bg-slate-500 flex flex-col mt-5 p-10 ">
-    <h1 class="capitalize text-6xl pb-10">CheckOut</h1>
+<section class="  flex flex-col my-16 md:mx-16 mx-12 text-start">
+    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()" class="flex flex-col gap-4">
+        <div class="grid md:grid-cols-3 gap-10 ">
+            <div class="md:col-span-2 grid ">
+                <div>
+                    <h3 class="capitalize font-medium text-xl main-txt">shipment method </h3>
+                    <div class=" flex flex-col m-4  border p-4 rounded-xl main-txt">
 
-        <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()" class="flex flex-col" >
-            <div class=" pb-3  m-3 "  >        
-                <label for="details" 
-                    [ngClass]="{
-                        'text-gray-900 dark:text-white': !checkOutForm.get('details')?.errors || !checkOutForm.get('details')?.touched,
-                        'text-red-700 dark:text-red-700': checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched,'shake': shakeFields['details']
-                    }"
-                    class="text-start block mb-2 ms-2 text-sm font-medium   text-gray-900 dark:text-white">
-                    Details
-                </label>
-                <textarea formControlName="details" id="details" placeholder="Any details you want to add."
-                    (blur)="checkError('details')"
-                    [ngClass]="{
-                        'bg-transparent border-gray-300 text-gray-900 bg-slate-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500': !checkOutForm.get('details')?.errors || !checkOutForm.get('details')?.touched,
-                        '  border-red-700 text-red-700 bg-slate-900 placeholder-red-700 focus:ring-red-700 focus:border-red-700': checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched,
-                        'shake': shakeFields['details']
-                    }"
-                    class="text-md rounded-lg block w-full p-2.5 bg-slate-900 dark:text-white"></textarea>
-    
-    
-                    @if(checkOutForm.get('details')?.getError('required') && checkOutForm.get('details')?.touched ){
-                        <p class="mt-2 text-md text-red-600 dark:text-red-700">Details is required!</p>
-                    }
-            </div>
-            <div class=" pb-3  m-3">
-                <label for="phone" 
-                    [ngClass]="{
-                        'text-gray-900 dark:text-white': !checkOutForm.get('phone')?.errors || !checkOutForm.get('phone')?.touched,
-                        'text-red-700 dark:text-red-700': checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched,'shake': shakeFields['phone']
-                    }"
-                    class="text-start block mb-2 ms-2 text-sm font-medium  text-gray-900 dark:text-white ">
-                    Phone Number
-                </label>
-                <input formControlName="phone" type="tel" id="phone" placeholder="01XXXXXXXXX"
-                    (blur)="checkError('phone')"
-                    [ngClass]="{
-                        '  dark:bg-slate-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !checkOutForm.get('phone')?.errors || !checkOutForm.get('phone')?.touched,
-                        ' dark:bg-slate-900 border-red-700 text-red-500 placeholder-red-500 focus:ring-red-500 focus:border-red-500': checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched,
-                        'shake': shakeFields['phone']
-                    }"
-                    class="text-sm rounded-lg block w-full p-2.5  bg-slate-900 dark:text-white" />
-                    @if(checkOutForm.get('phone')?.getError('required') && checkOutForm.get('phone')?.touched ){
-                        <p class="mt-2 text-md text-red-600 dark:text-red-700">Number is required!</p>
-    
-                    }
-    
-                    @if(checkOutForm.get('phone')?.getError('pattern') && checkOutForm.get('phone')?.touched ){
-                        <p class="mt-2 text-md text-red-600 dark:text-red-700">Enter a valid phone number!</p>
-    
-                    }
-            </div>
-            <div class="pb-3  m-3  mb-6">
-                <label for="city" 
-                    [ngClass]="{
-                        'text-gray-900 dark:text-white': !checkOutForm.get('city')?.errors || !checkOutForm.get('city')?.touched,
-                        'text-red-700 dark:text-red-700': checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched,'shake': shakeFields['city']
-                    }"
-                    class="text-start block mb-2 ms-2 text-sm font-medium  text-gray-900 dark:text-white ">
-                    City
-                </label>
-                <input formControlName="city" type="text" id="city" placeholder="Please enter your city"
-                    (blur)="checkError('city')"
-                    [ngClass]="{
-                        ' dark:bg-slate-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500': !checkOutForm.get('city')?.errors || !checkOutForm.get('city')?.touched,
-                        ' dark:bg-slate-900 border-red-700 text-red-500 placeholder-red-500 focus:ring-red-500 focus:border-red-500': checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched,
-                        'shake': shakeFields['city']
-                    }"
-                    class="text-sm rounded-lg block w-full p-2.5 bg-slate-900 dark:text-white" />
-                    @if(checkOutForm.get('city')?.getError('required') && checkOutForm.get('city')?.touched ){
-                        <p class="mt-2 text-md text-red-600 dark:text-red-700">City is required!</p>
-    
-                    }
-            </div>
-            <button type="submit" class="block me-auto ms-3 p-5 py-3 rounded-lg font-medium bg-emerald-500"> Submit</button>
-        </form>
+                        <div class="flex justify-between items-center border-b pb-5">
+                            <div class="main-txt flex flex-row items-center justify-start gap-3">
+                                <input (change)="updateShiping('regular')" checked type="radio" name="shipment-method" id="shipment-free" class="border-2  focus:bg-none   focus:ring-[#8B5E35] border-[#8B5E35]">
+                                <label for="shipment-free" class="capitalize  font-semibold">free<span class="capitalize font-normal ps-3">Regular shipment</span></label>
 
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="sec-txt font-medium">(2 days shiping)</span>
+                                <span class="font-semibold">{{ currentDate()  | date: 'dd MMM, y' }}</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center pt-5">
+                            <div class="main-txt flex flex-row items-center justify-start gap-3">
+                                <input (change)="updateShiping('priority')" type="radio" name="shipment-method" id="shipment-paid" class="border-2  focus:bg-none   focus:ring-[#8B5E35] border-[#8B5E35]">
+                                <label for="shipment-paid" class="capitalize  font-semibold">{{100|currency :"EGP"}} <span class="ps-3 capitalize font-normal">priority shipment</span></label>
+
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="sec-txt font-medium">(same day shiping)</span>
+                                <span class="font-semibold">{{ shipingDate()  | date: 'dd MMM, y' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="capitalize font-medium text-xl main-txt">payment method </h3>
+                    <div class=" flex flex-col m-4  border p-4 rounded-xl main-txt">
+
+                        <div class="flex justify-between items-center border-b pb-5">
+                            <div class="main-txt flex flex-row items-center justify-start gap-3">
+                                <input (change)="updatePayment('cash')" checked type="radio" name="payment-method" id="payment-cash" class="border-2  focus:bg-none   focus:ring-[#8B5E35] border-[#8B5E35]">
+                                <label for="payment-cash" class="capitalize  font-semibold">Cash<span class="capitalize font-normal ps-3 sec-txt "></span></label>
+
+                            </div>
+                            <span class="font-semibold sec-txt capitalize">(pay when your order arrives)</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-5">
+                            <div class="main-txt flex flex-row items-center justify-start gap-3">
+                                <input (change)="updatePayment('card')" type="radio" name="payment-method" id="payment-card" class="border-2  focus:bg-none   focus:ring-[#8B5E35] border-[#8B5E35]">
+                                <label for="payment-card" class="capitalize  font-semibold">card<span class="font-[550] ps-3 sec-txt">Debit - Credit</span></label>
+
+                            </div>
+                            <div class="flex gap-3">
+
+                                <span class="font-semibold sec-txt capitalize">(pay now with card)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col" >
+
+                    <div class="mb-4">
+                        <label for="phone" [ngClass]="{
+                    'main-txt  ':
+                        !checkOutForm.get('phone')?.errors || !checkOutForm.get('phone')?.touched,
+                    'text-red-700 ':
+                        checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched,
+                    shake: shakeFields['phone'],
+                    colored: colorFields['phone']
+                    }" class="block mb-2 text-[18px] font-medium capitalize">
+                            phone number
+                        </label>
+
+                        <div class="relative shake-wrapper" [ngClass]="{ shake: shakeFields['phone'] }">
+                            <input formControlName="phone" type="text" id="phone" placeholder="01XXXXXXXXX"
+                                (blur)="checkError('phone')" [ngClass]="{
+                        'bg-transparent main-txt ':
+                        !checkOutForm.get('phone')?.errors || !checkOutForm.get('phone')?.touched,
+                        'bg-red-50 ':
+                        checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched
+                    }" class="text-[18px] rounded-xl border border-[#8B5E35] block w-full placeholder:text-[15px] p-4 focus:border-[#8B5E35] focus:ring-0" />
+                        </div>
+
+                        @if(checkOutForm.get('phone')?.getError('required') &&
+                        checkOutForm.get('phone')?.touched ){
+                        {{ wrongInput("phone", "phone number is required!") }}
+                        } @if(checkOutForm.get('phone')?.getError('pattern') &&
+                        checkOutForm.get('phone')?.touched ){
+                        {{ wrongInput("phone", "Enter a valid phone number!") }}
+
+                        }
+                    </div>
+                    <div class="mb-4">
+                        <label for="city" [ngClass]="{
+                    'main-txt  ':
+                        !checkOutForm.get('city')?.errors || !checkOutForm.get('city')?.touched,
+                    'text-red-700 ':
+                        checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched,
+                    shake: shakeFields['city'],
+                    colored: colorFields['city']
+                    }" class="block mb-2 text-[18px] font-medium capitalize">
+                            city name
+                        </label>
+
+                        <div class="relative shake-wrapper " [ngClass]="{ shake: shakeFields['city'] }">
+                            <input formControlName="city" type="text" id="city" placeholder="Your Current City."
+                                (blur)="checkError('city')" [ngClass]="{
+                        'bg-transparent main-txt ':
+                        !checkOutForm.get('city')?.errors || !checkOutForm.get('city')?.touched,
+                        'bg-red-50 ':
+                        checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched
+                    }" class="text-[18px] rounded-xl border border-[#8B5E35] block w-full placeholder:text-[15px] p-4 focus:border-[#8B5E35] focus:ring-0" />
+                        </div>
+
+                        @if(checkOutForm.get('city')?.getError('required') &&
+                        checkOutForm.get('city')?.touched ){
+                        {{ wrongInput("city", "city  is required!") }}
+                        }
+                    </div>
+                    <div class="mb-4">
+                        <label for="details" [ngClass]="{
+                    'main-txt  text-start ms-2':
+                        !checkOutForm.get('details')?.errors || !checkOutForm.get('details')?.touched,
+                    'text-red-700 ':
+                        checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched,
+                    shake: shakeFields['details'],
+                    colored: colorFields['details']
+                    }" class="block mb-2 text-[18px] font-medium capitalize">
+                            details
+                        </label>
+
+                        <div class="relative shake-wrapper border border-[#8B5E35] rounded-xl" [ngClass]="{ shake: shakeFields['details'] }">
+
+                            <textarea formControlName="details" type="text" id="details" placeholder="Any details you want to add."
+                                (blur)="checkError('details')" [ngClass]="{
+                        'bg-transparent main-txt ':
+                        !checkOutForm.get('details')?.errors || !checkOutForm.get('details')?.touched,
+                        'bg-red-50 ':
+                        checkOutForm.get('details')?.errors && checkOutForm.get('details')?.touched
+                    }" class="text-[18px] rounded-lg block w-full placeholder:text-[15px] p-4  border-0 focus:ring-0" >
+                    </textarea>
+                        </div>
+
+                        @if(checkOutForm.get('details')?.getError('required') &&
+                        checkOutForm.get('details')?.touched ){
+                        {{ wrongInput("details", "Details are required!") }}
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-1 flex h-fit flex-col text-start bg-white border rounded-lg ms-0 gap-7 m-2 p-8">
+            <h4 class="capitalize main-txt font-medium text-2xl ">order summary</h4>
+            <div class="flex flex-col gap-6 border-b border-[#D1D1D8] pb-8">
+                <div class="main-txt flex justify-between">
+                <span class="capitalize">price</span>
+                @if (shipingType()) {
+                    <span>{{cartDetails().totalCartPrice*2 + 100| currency: "EGP"}}</span>
+                }@else{
+                    <span>{{cartDetails().totalCartPrice*2  | currency: "EGP"}}</span>
+                }
+                </div>
+                <div class="main-txt flex justify-between">
+                <span class="capitalize">discount</span>
+                    <span>{{cartDetails().totalCartPrice | currency: "EGP"}}</span>
+
+                </div>
+                <div class="main-txt flex justify-between">
+                <span class="capitalize">shipping</span>
+                <span class="capitalize main-color">free</span>
+                </div>
+                <div class="main-txt flex justify-between">
+                <span class="capitalize">coupon applied</span>
+                <span>{{0 | currency: "EGP"}}</span>
+                </div>
+            </div>
+            <div class="flex flex-col gap-5">
+                <div class="text-[#17183B] flex justify-between">
+                <span class="uppercase font-semibold">total</span>
+                <div class="grid grid-cols-1 gap-3 ">
+
+                <span class="line-through sec-txt">{{cartDetails().totalCartPrice * 2 | currency: "EGP"}}</span>
+                @if (shipingType()) {
+                    <span>{{cartDetails().totalCartPrice + 100| currency: "EGP"}}</span>
+                }@else{
+                    <span>{{cartDetails().totalCartPrice | currency: "EGP"}}</span>
+                }
+                </div>
+                </div>
+                <div class="text-[#17183B] flex justify-between ">
+                <span class="capitalize font-medium">estimated delivery by</span>
+                @if (shipingType()) {
+                    <span class="font-semibold">{{ shipingDate()  | date: 'dd MMM, y' }}</span>
+                }@else{
+                    <span class="font-semibold">{{ currentDate()  | date: 'dd MMM, y' }}</span>
+                }
+                </div>
+            </div>
+            <div class="relative">
+            <input type="text" placeholder="coupon code" class="placeholder:capitalize placeholder:ps-2 h-[56px] rounded-xl w-full border-[#C0C0C0] focus:ring-0 focus:border-[#C0C0C0] mb-4 xl:mb-0">
+            <button class="hover:bg-white transition-all duration-500 ease-in-out hover:scale-105 hover:text-[#8B5E35] border border-[#8B5E35]  capitalize px-4 py-2 text-white main-color-bg xl:absolute rounded-lg xl:right-0 xl:me-3 xl:top-1/2 xl:translate-y-[-50%] w-1/2 xl:w-fit">apply</button>
+
+            </div>
+            <button class="hover:bg-white transition-all duration-500 ease-in-out hover:scale-105 hover:text-[#8B5E35] border border-[#8B5E35]  capitalize  text-white main-color-bg text-xl  rounded-full w-full py-3 mt-2" type="submit">place order</button>
+            </div>
+        </div>
+    </form>
+    <div class="mt-10">
+    <h3 class=" main-txt font-semibold text-[40px] capitalize text-start">similar products</h3>
+    <app-similar-products></app-similar-products>
+    </div>
 </section>
+
+
+
+

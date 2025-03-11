@@ -1,6 +1,6 @@
 
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withRouterConfig } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { provideToastr } from 'ngx-toastr';
@@ -11,6 +11,7 @@ import { loadingScreensInterceptor } from './core/interceptors/loadingscreens/lo
 import { errorInterceptor } from './core/interceptors/error/error.interceptor';
 import { headersInterceptor } from './core/interceptors/headers/headers.interceptor';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -19,8 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(),withInterceptors([loadingScreensInterceptor,errorInterceptor,headersInterceptor])),
     provideToastr(),
     provideAnimations(),
-    importProvidersFrom(NgxSpinnerModule )
-    
+    importProvidersFrom(NgxSpinnerModule ),
     ]
 
 };

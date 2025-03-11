@@ -5,9 +5,15 @@ import { finalize } from 'rxjs';
 
 export const loadingScreensInterceptor: HttpInterceptorFn = (req, next) => {
   const ngxSpinnerService = inject(NgxSpinnerService)
-  ngxSpinnerService.show()
 
-  return next(req).pipe(finalize(()=>{
-    ngxSpinnerService.hide()
-  }));
+
+
+    ngxSpinnerService.show();
+
+
+  return next(req).pipe(
+    finalize(() => {
+        ngxSpinnerService.hide();     
+    })
+  );
 };

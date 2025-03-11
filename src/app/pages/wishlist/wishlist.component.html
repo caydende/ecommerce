@@ -1,1 +1,76 @@
-<p>wishlist works!</p>
+<section class="md:mx-16">
+    <div class="my-16 flex flex-col ">
+        <div>
+            <h3 class="sec-head capitalize mb-2 mx-auto">liked products</h3>
+            <h3 class="sec-head1 capitalize mb-4 mx-auto">products you have choosed!</h3>
+        </div>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border bg-white p-2 rounded-xl shadow-lg shadow-[#8B5E35]">
+            @for ( prod of products() ; track prod.id){
+            <div class="scale-90 mx-auto card max-w-[275px] border-gray-200 rounded-xl shadow-lg shadow-[#c9996c] bg-white">
+                <div class="rounded-xl overflow-hidden relative">
+                    @for (prodWish of userWishlist(); track prodWish._id) { @if (prodWish._id
+                    === prod.id) { @if(wishCondition()[prod.id] === true){
+                    <span
+                        class="loader border-t-[#8B5E35!important] text-start w-6 h-6 top-0 right-0 absolute me-2 mt-2 ms-2 rounded-full py-1 px-2 "></span>
+                    }@else {
+                    <span
+                        class="text-start top-0 right-0 absolute me-2 mt-2 text-lg font-medium ms-2 rounded-full py-1 px-2  main-color z-10 cursor-pointer hover:scale-110 transition-all ease-in-out duration-500">
+                        <i (click)="removeFromWishlist(prod.id)" class="fa-solid fa-heart text-2xl"></i>
+                    </span>
+                    } } @else if (!isInWishlist(prod.id) ) { @if(wishCondition()[prod.id] ===
+                    true){
+                    <span
+                        class="loader border-t-[#8B5E35!important] text-start w-6 h-6 top-0 right-0 absolute me-2 mt-2 ms-2 rounded-full py-1 px-2 "></span>
+                    }@else {
+                    <span
+                        class="text-start top-0 right-0 absolute me-2 mt-2 text-lg font-medium ms-2 rounded-full py-1 px-2  main-color z-10 cursor-pointer hover:scale-110 transition-all ease-in-out duration-500">
+                        <i (click)="addToWishlist(prod.id)" class="fa-regular fa-heart text-2xl"></i>
+                    </span>
+                    } } }
+
+                    <img [routerLink]="['/details', prod.id]"
+                        class="h-[275px] w-[275px] hover:scale-110 transition-all duration-500 ease-in-out cursor-pointer mx-0 p-2 rounded-lg object-cover"
+                        [src]="prod.imageCover" [alt]="prod.title" />
+                    <span
+                        class="text-start me-auto bottom-0 left-0 absolute text-lg font-medium ms-2 rounded-md py-1 px-2 text-white main-color-bg z-10">-50%</span>
+                </div>
+                <div class="ps-2 px-5 pb-5">
+                    <a>
+                        <h5 class="text-start text-2xl font-medium tracking-tight main-txt">
+                            {{ prod.title.split(" ", 2).join(" ") }}
+                        </h5>
+                    </a>
+                    <div class="flex items-center mb-5">
+                        <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                            @for(num of [1,2,3,4,5].slice(0 , prod.ratingsAverage) ; track
+                            $index){
+                            <span> <i class="fa-solid fa-star main-color"></i></span>
+                            } @if(halfstar(prod.ratingsAverage) ){
+                            <i class="fa-solid fa-star-half-stroke main-color"></i>
+                            }
+                        </div>
+                        <span class="main-color text-xs font-bold px-2.5 py-0.5 rounded-sm sec-color-bg ms-3">{{
+                            prod.ratingsAverage }}</span>
+                        <span class="text-gray-300 text-xs font-semibold px-1.5 py-0.5 rounded-sm bg-transparent">({{
+                            prod.ratingsQuantity }})</span>
+                    </div>
+                    <div class="flex items-center justify-between text-white">
+                        <span class="text-lg font-semibold main-color">{{ prod.price | currency : "EGP" }}
+                            <span class="text-gray-300 line-through">
+                                {{ prod.price * 2 | currency : "EGP" }}
+                            </span></span>
+                        <a role="button" (click)="addProductToCart(prod.id)"
+                            class="relative main-color-bg px-1.5 py-1 rounded-lg hover:text-[#8B5E35] transition-all ease-in-out duration-500 hover:scale-110 border border-[#8B5E35] hover:bg-white">
+                            @if(addToCartLoader()[prod.id] === true){
+                            <span class="loader"></span>
+                            }@else{
+                            <i class="fa-solid fa-plus w-[20px] h-[20px]"></i>
+                            }
+                        </a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>   
+</section>

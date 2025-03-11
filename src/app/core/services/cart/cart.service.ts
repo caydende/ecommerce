@@ -10,6 +10,7 @@ export class CartService {
   private readonly httpClient = inject(HttpClient)
   cartItemsNum:WritableSignal<number> = signal(0)
 
+
   addToCart(id:string):Observable<any>{
     return this.httpClient.post(`${environment.baseUrl}/api/v1/cart` , {
       "productId": id

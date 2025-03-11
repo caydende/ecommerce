@@ -19,5 +19,15 @@ export class OrdersService {
       }
     )
   }
+  cashOrder(cartId:string , details:object):Observable<any>{
+    return this.httpClient.post(`${environment.baseUrl}/api/v1/orders/${cartId}?url=http://localhost:4200`
+      ,{
+        "shippingAddress": details
+      }
+    )
+  }
 
+  getUserOrder():Observable<any>{
+  return this.httpClient.get(`${environment.baseUrl}/api/v1/orders/user/${localStorage.getItem('userId')}`)
+  }
 }

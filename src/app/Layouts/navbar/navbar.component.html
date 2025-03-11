@@ -7,28 +7,32 @@
             <div class="hidden w-full md:flex md:w-auto  px-2" id="navbar-default">
                 @if(isLogin()){
                     <ul
-                    class="sec-txt hover-nav font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg  md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 ">
+                    class="sec-txt hover-nav font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 ">
                     <li>
-                        <a routerLink="/home" routerLinkActive=" nav-active" 
+                        <a routerLink="/home" routerLinkActive=" nav-active font-semibold" 
                             class="capitalize block py-1 px-4   rounded-sm   "
                             aria-current="page">home</a>
                     </li>
                     <li>
-                        <a routerLink="/products" routerLinkActive="nav-active " 
+                        <a routerLink="/products" routerLinkActive="nav-active font-semibold " 
                             class="capitalize block py-1 px-4    rounded-sm   "
                             aria-current="page">products</a>
                     </li>
                     <li>
-                        <a routerLink="/categories" routerLinkActive=" nav-active" 
-                            class="capitalize block py-1 px-4  rounded-sm   "
-                            aria-current="page">categories</a> 
+                        <a routerLink="/allorders" routerLinkActive="nav-active font-semibold " 
+                            class="capitalize block py-1 px-4    rounded-sm   "
+                            aria-current="page">orders</a>
                     </li>
                     <li>
-                        <a routerLink="/brands" routerLinkActive="nav-active " 
-                            class="capitalize block py-1 px-4   rounded-sm   "
-                            aria-current="page">brands</a>
+                        <a routerLink="/about" routerLinkActive="nav-active font-semibold " 
+                            class="capitalize block py-1 px-4    rounded-sm   "
+                            aria-current="page">about us</a>
                     </li>
-    
+                    <li>
+                        <a routerLink="/blog" routerLinkActive="nav-active font-semibold " 
+                            class="capitalize block py-1 px-4 rounded-sm   "
+                            aria-current="page">blog</a>
+                    </li>
                 </ul>
                 }
 
@@ -52,24 +56,24 @@
                 }@else {   
                     <div class="flex flex-row align-items-center gap-9 mb-3 md:mt-5">
                         <li>
-                            <a role="button" routerLink="/wishlist" class=" main-color relative capitalize block text-2xl rounded-sm"aria-current="page">
+                            <a role="button" routerLink="/wishlist" class=" pt-1 main-color relative capitalize block text-2xl rounded-sm"aria-current="page">
                                 <i class="fa-regular fa-heart"routerLinkActive=" fa-solid "></i>
                             </a>
                         </li>
                         <li>
                         <a role="button" routerLink="/cart" routerLinkActive=" " 
-                            class="relative capitalize block  text-2xl  rounded-sm   "
+                            class="relative capitalize block  text-2xl  rounded-sm pt-1  "
                             aria-current="page">
                             <i class="fa-solid fa-cart-shopping main-color md:pt-1"></i>
                             @if(cartService.cartItemsNum() !== 0){
-                                <span class=" text-yellow-800 text-xs   px-1 rounded-full absolute top-0 left-0">{{cartService.cartItemsNum()}}</span>
+                                <span class=" text-xs font-medium me-auto mb-auto px-1.5  rounded-full text-[#8B5E35] bg-[#e0b53f] absolute top-0 left-0">{{cartService.cartItemsNum()}}</span>
                             }
             
                         </a>
                         </li>   
                         <li>
                             <a role="button" (click)="showAlert()"
-                                class="capitalize block main-color pt-1 rounded-sm   "
+                                class="capitalize block main-color pt-2 rounded-sm   "
                                 aria-current="page"><i class="fa-solid fa-right-from-bracket text-2xl   "></i></a>
                         </li>   
                     </div>
@@ -78,7 +82,7 @@
             </ul>
             </div>
             <button  data-collapse-toggle="navbar-default" type="button"
-                class="ms-auto inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                class="ms-auto inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden  focus:outline-none focus:ring-0  text-slate-600"
                 aria-controls="navbar-default" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
