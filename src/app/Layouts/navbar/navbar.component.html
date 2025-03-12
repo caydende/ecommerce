@@ -5,7 +5,7 @@
             <a routerLink="/home"><h1 class="font-normal text-3xl nav-title">Trendify</h1></a>
             
             <div class="hidden w-full md:flex md:w-auto  px-2" id="navbar-default">
-                @if(isLogin()){
+                @if(isLogin){
                     <ul
                     class="sec-txt hover-nav font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 ">
                     <li>
@@ -40,7 +40,7 @@
             <div class="">
                 <ul
                 class="ms-auto font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 border-0 ">
-                @if(!isLogin()){
+                @if(!isLogin){
                     <div class="flex flex-row gap-6 main-color">
                         <li>
                             <a routerLink="/login" routerLinkActive=" text-white main-color-bg" 

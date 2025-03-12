@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from './../../core/services/auth/auth.service';
-import { Component, inject, signal, WritableSignal, OnInit } from '@angular/core';
+import { Component, inject, signal, WritableSignal, OnInit, input, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
@@ -12,22 +12,12 @@ import { CartService } from '../../core/services/cart/cart.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   private readonly authService = inject(AuthService);
   private readonly toastrService = inject(ToastrService);
   readonly cartService = inject(CartService);
 
-  isLogin: WritableSignal<boolean> = signal(true);
-  ngOnInit(): void {
-    if (!this.isLogin()) return;
-
-    this.cartService.getUserCart().subscribe({
-      next: (res) => {
-        localStorage.setItem('cartId', res.cartId);
-        this.cartService.cartItemsNum.set(res.numOfCartItems);
-      }
-    });
-  }
+  @Input() isLogin: boolean = true;
 
   showAlert(): void {
     Swal.fire({
@@ -40,7 +30,6 @@ export class NavbarComponent implements OnInit {
       confirmButtonText: 'Log out!',
     }).then((result) => {
       if (!result.isConfirmed) return;
-
       this.authService.logOut();
       this.toastrService.success('Your account has been successfully logged out', 'Fresh Cart');
 
