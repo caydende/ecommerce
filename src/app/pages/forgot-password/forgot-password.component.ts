@@ -16,14 +16,20 @@ export class ForgotPasswordComponent {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   private readonly toastrService = inject(ToastrService)
-  step = 1;
+  step = 3;
 
   shakeFields: { [key: string]: boolean } = {};
   colorFields: { [key: string]: boolean } = {};
   showWarning:WritableSignal<boolean> = signal(false)
+  fieldTextType:WritableSignal<{ [key: string]: boolean }>  = signal({ '': false })
 
 
-
+  changVisible(btn: string): void {
+    this.fieldTextType.update(state => ({
+      ...state,  
+      [btn]: !state[btn] 
+    }));
+  }
 
   wrongInput(field:string ,message:string):void{
     if(!this.showWarning()){

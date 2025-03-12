@@ -27,7 +27,7 @@
                 !login.get('email')?.errors || !login.get('email')?.touched,
               'bg-red-50 ':
                 login.get('email')?.errors && login.get('email')?.touched
-            }" class="text-[18px] rounded-lg block w-full placeholder:text-[15px] p-2.5 pl-10 border-0 focus:ring-0" />
+            }" class="text-sm md:text-[18px] focus:border-[#8B5E35] border border-[#8B5E35] rounded-full block w-full placeholder:text-[15px] p-2.5 pl-10 focus:ring-0" />
                 </div>
 
                 @if(login.get('email')?.getError('required') &&
@@ -54,14 +54,21 @@
                 <div class="relative shake-wrapper" [ngClass]="{ shake: shakeFields['password'] }">
                     <i
                         class="main-color fa-solid fa-lock w-[20px] h-[16px] absolute left-3 top-[53%] transform -translate-y-1/2 text-gray-500"></i>
-                    <input formControlName="password" type="password" id="password" placeholder="Password"
+                    <input formControlName="password" [type]="fieldTextType()['password'] ? 'text' : 'password'" id="password" placeholder="Password"
                         (blur)="checkError('password')" [ngClass]="{
               'bg-transparent  main-txt   ':
                 !login.get('password')?.errors ||
                 !login.get('password')?.touched,
               'bg-red-50   ':
                 login.get('password')?.errors && login.get('password')?.touched
-            }" class="text-[18px] rounded-lg block w-full placeholder:text-[15px] p-2.5 pl-10 border-0 focus:ring-0" />
+            }" class="text-sm md:text-[18px] focus:border-[#8B5E35] border border-[#8B5E35] rounded-full block w-full placeholder:text-[15px] p-2.5 pl-10  focus:ring-0" />
+                      <i (click)="changVisible('password')"
+                      [ngClass]="{
+                          'fa-eye-slash': !fieldTextType()['password'],
+                          'fa-eye': fieldTextType()['password']
+                      }"
+                      class="cursor-pointer main-color fa-solid fa-eye w-[20px] h-[16px] text-lg absolute right-4 top-[50%] transform -translate-y-1/2 "
+                    ></i>
                 </div>
                 @if(login.get('password')?.getError('required') &&
                 login.get('password')?.touched ){
@@ -104,37 +111,39 @@
             </div>
         </form>
     </div>
-    <swiper-container style="
-      --swiper-navigation-color: #8b5e35;
-      --swiper-pagination-color: #8b5e35;
-      --swiper-navigation-size: 32px;
-    " class="mySwiper flex flex-col align-items-center" speed="600" parallax="true" pagination="true"
-        pagination-clickable="true" navigation="true">
-        <div slot="container-start" class="parallax-bg bg-img" data-swiper-parallax="-23%"></div>
-
-        <swiper-slide>
-            <h4 class="font-bold text-[32px] mb-3" data-swiper-parallax="-300">
-                Welcome to Trendify
-            </h4>
-            <h5 class="leading-6 text-xl font-medium mb-32 mx-36 md:mx-12" data-swiper-parallax="-200">
-                Discover the latest trends, express your unique style.
-            </h5>
-        </swiper-slide>
-        <swiper-slide>
-            <h4 class="font-bold text-[32px] mb-3" data-swiper-parallax="-300">
-                Welcome to Trendify 2
-            </h4>
-            <h5 class="leading-6 text-xl font-medium mb-32  lg:mx-24 md:mx-12" data-swiper-parallax="-200">
-                Discover the latest trends, express your unique style.
-            </h5>
-        </swiper-slide>
-        <swiper-slide>
-            <h4 class="font-bold text-[32px] mb-3" data-swiper-parallax="-300">
-                Welcome to Trendify 3
-            </h4>
-            <h5 class="leading-6 text-xl font-medium mb-32  lg:mx-24 md:mx-12" data-swiper-parallax="-200">
-                Discover the latest trends, express your unique style.
-            </h5>
-        </swiper-slide>
-    </swiper-container>
+    @if(gridcols() > 2){
+        <swiper-container style="
+        --swiper-navigation-color: #8b5e35;
+        --swiper-pagination-color: #8b5e35;
+        --swiper-navigation-size: 32px;
+      " class="mySwiper flex flex-col align-items-center" speed="600" parallax="true" pagination="true"
+          pagination-clickable="true" navigation="true">
+          <div slot="container-start" class="parallax-bg bg-img" data-swiper-parallax="-23%"></div>
+  
+          <swiper-slide>
+              <h4 class="font-bold text-[32px] mb-3" data-swiper-parallax="-300">
+                  Welcome to Trendify
+              </h4>
+              <h5 class="leading-6 text-xl font-medium mb-32 mx-36 md:mx-12" data-swiper-parallax="-200">
+                  Discover the latest trends, express your unique style.
+              </h5>
+          </swiper-slide>
+          <swiper-slide>
+              <h4 class="font-bold text-[32px] mb-3" data-swiper-parallax="-300">
+                  Welcome to Trendify 2
+              </h4>
+              <h5 class="leading-6 text-xl font-medium mb-32  lg:mx-24 md:mx-12" data-swiper-parallax="-200">
+                  Discover the latest trends, express your unique style.
+              </h5>
+          </swiper-slide>
+          <swiper-slide>
+              <h4 class="font-bold text-[32px] mb-3" data-swiper-parallax="-300">
+                  Welcome to Trendify 3
+              </h4>
+              <h5 class="leading-6 text-xl font-medium mb-32  lg:mx-24 md:mx-12" data-swiper-parallax="-200">
+                  Discover the latest trends, express your unique style.
+              </h5>
+          </swiper-slide>
+      </swiper-container>
+    }
 </section>

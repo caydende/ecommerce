@@ -76,7 +76,7 @@
                         !checkOutForm.get('phone')?.errors || !checkOutForm.get('phone')?.touched,
                         'bg-red-50 ':
                         checkOutForm.get('phone')?.errors && checkOutForm.get('phone')?.touched
-                    }" class="text-[18px] rounded-xl border border-[#8B5E35] block w-full placeholder:text-[15px] p-4 focus:border-[#8B5E35] focus:ring-0" />
+                    }" class="text-sm md:text-[18px] focus:border-[#8B5E35] border border-[#8B5E35] rounded-full block w-full placeholder:text-[15px] p-4  focus:ring-0" />
                         </div>
 
                         @if(checkOutForm.get('phone')?.getError('required') &&
@@ -107,7 +107,7 @@
                         !checkOutForm.get('city')?.errors || !checkOutForm.get('city')?.touched,
                         'bg-red-50 ':
                         checkOutForm.get('city')?.errors && checkOutForm.get('city')?.touched
-                    }" class="text-[18px] rounded-xl border border-[#8B5E35] block w-full placeholder:text-[15px] p-4 focus:border-[#8B5E35] focus:ring-0" />
+                    }" class="text-sm md:text-[18px]  border border-[#8B5E35] rounded-full block w-full placeholder:text-[15px] p-4 focus:border-[#8B5E35] focus:ring-0" />
                         </div>
 
                         @if(checkOutForm.get('city')?.getError('required') &&

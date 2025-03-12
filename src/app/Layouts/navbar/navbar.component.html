@@ -1,21 +1,20 @@
 
     <nav class="bg-transparent navbar-shadow ">
     <div class="mx-2 md:mx-16">
-        <div class="max-w-screen-2lx flex flex-wrap items-center md:justify-between mx-auto pt-3 pb-2 px-2">
-            <a routerLink="/home"><h1 class="font-normal text-3xl nav-title">Trendify</h1></a>
-            
-            <div class="hidden w-full md:flex md:w-auto  px-2" id="navbar-default">
+        <div class="max-w-screen-2lx flex  items-center justify-between mx-auto pt-3 pb-2 px-2">
+            <a routerLink="/home"><h1 class="font-normal text-2xl md:text-3xl nav-title">Trendify</h1></a>
+            <div class="hidden w-full md:flex md:w-auto  px-1" id="navbar-default">
                 @if(isLogin){
                     <ul
                     class="sec-txt hover-nav font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 ">
                     <li>
                         <a routerLink="/home" routerLinkActive=" nav-active font-semibold" 
-                            class="capitalize block py-1 px-4   rounded-sm   "
+                            class="capitalize block py-1 px-4 text-sm md:text-[18px]    rounded-sm   "
                             aria-current="page">home</a>
                     </li>
                     <li>
                         <a routerLink="/products" routerLinkActive="nav-active font-semibold " 
-                            class="capitalize block py-1 px-4    rounded-sm   "
+                            class="capitalize block py-1 px-4  text-sm md:text-[18px]   rounded-sm   "
                             aria-current="page">products</a>
                     </li>
                     <li>
@@ -41,15 +40,15 @@
                 <ul
                 class="ms-auto font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 border-0 ">
                 @if(!isLogin){
-                    <div class="flex flex-row gap-6 main-color">
+                    <div class="flex flex-row gap-2 main-color mb-3">
                         <li>
                             <a routerLink="/login" routerLinkActive=" text-white main-color-bg" 
-                                class=" capitalize block py-2 px-10   rounded-full  font-medium  hover:bg-[#8B5E35] hover:text-white border-[#8B5E35] transition-all duration-[500ms] border"
+                                class=" capitalize block py-1.5 px-3 md:py-2 md:px-10   rounded-full  font-medium  hover:bg-[#8B5E35] hover:text-white border-[#8B5E35] transition-all duration-[500ms] border"
                                 aria-current="page">login</a>
                         </li>
                         <li>
                             <a routerLink="/register" routerLinkActive=" text-white main-color-bg" 
-                                class="capitalize block py-2 px-10   rounded-full  font-medium hover:bg-[#8B5E35] hover:text-white border-[#8B5E35] transition-all duration-[500ms] border"
+                                class="capitalize block py-1.5 px-3 md:py-2 md:px-10   rounded-full  font-medium hover:bg-[#8B5E35] hover:text-white border-[#8B5E35] transition-all duration-[500ms] border"
                                 aria-current="page">sign up</a>
                         </li>
                     </div>
@@ -81,8 +80,9 @@
     
             </ul>
             </div>
-            <button  data-collapse-toggle="navbar-default" type="button"
-                class="ms-auto inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden  focus:outline-none focus:ring-0  text-slate-600"
+            @if(isLogin){
+                <button  data-collapse-toggle="navbar-default" type="button"
+                class="ms-0 inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden  focus:outline-none focus:ring-0  text-slate-600"
                 aria-controls="navbar-default" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -90,6 +90,7 @@
                         d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
             </button>
+            }
         </div>
     </div>
 </nav>

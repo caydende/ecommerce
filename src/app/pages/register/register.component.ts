@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, signal, WritableSignal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup , ReactiveFormsModule, Validators  } from '@angular/forms';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
@@ -14,17 +14,29 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './register.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   private readonly  authService = inject(AuthService)
   private readonly router = inject(Router)
   readonly toastrService = inject(ToastrService)
 
 
-
+  gridcols = signal(2);
   shakeFields: { [key: string]: boolean } = {};
   colorFields: { [key: string]: boolean } = {};
   showWarning:WritableSignal<boolean> = signal(false)
+  fieldTextType:WritableSignal<{ [key: string]: boolean }>  = signal({ '': false })
+
+  ngOnInit(): void {
+    this.updateGridCols()
+  }
+
+  changVisible(btn: string): void {
+    this.fieldTextType.update(state => ({
+      ...state,  
+      [btn]: !state[btn] 
+    }));
+  }
 
   checkError(field: string) {
     if (this.register.get(field)?.errors && this.register.get(field)?.touched) {
@@ -79,5 +91,14 @@ export class RegisterComponent {
           this.register.get(field)?.markAsUntouched(); 
     }
 
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.updateGridCols();
+  }
+
+  updateGridCols(): void {
+    const width = window.innerWidth;
+    this.gridcols.set(width >= 1024 ? 4 : width >= 768 ? 3 : 2);
   }
 }
