@@ -2,7 +2,7 @@ import { RenderMode, ServerRoute } from '@angular/ssr';
 
 export const serverRoutes: ServerRoute[] = [
   {
-    path: 'products/:id',  // Handle dynamic product routes using SSR
+    path: 'details/:id',  // Handle dynamic product routes using SSR
     renderMode: RenderMode.Server
   },
   {
