@@ -27,7 +27,7 @@
                 !login.get('email')?.errors || !login.get('email')?.touched,
               'bg-red-50 ':
                 login.get('email')?.errors && login.get('email')?.touched
-            }" class="text-sm md:text-[18px] focus:border-[#8B5E35] border border-[#8B5E35] rounded-full block w-full placeholder:text-[15px] p-2.5 pl-10 focus:ring-0" />
+            }" class="text-xs sm:text-sm md:text-[18px] focus:border-[#8B5E35] border border-[#8B5E35] rounded-full block w-full placeholder:text-[15px] p-2.5 pl-10 focus:ring-0" />
                 </div>
 
                 @if(login.get('email')?.getError('required') &&
@@ -119,7 +119,7 @@
       " class="mySwiper flex flex-col align-items-center" speed="600" parallax="true" pagination="true"
           pagination-clickable="true" navigation="true">
           <div slot="container-start" class="parallax-bg bg-img" data-swiper-parallax="-23%"></div>
-  
+
           <swiper-slide>
               <h4 class="font-bold text-[32px] mb-3" data-swiper-parallax="-300">
                   Welcome to Trendify

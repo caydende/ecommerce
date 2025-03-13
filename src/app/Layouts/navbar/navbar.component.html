@@ -8,27 +8,27 @@
                     <ul
                     class="sec-txt hover-nav font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 ">
                     <li>
-                        <a routerLink="/home" routerLinkActive=" nav-active font-semibold" 
+                        <a routerLink="/home" routerLinkActive=" nav-active font-semibold"
                             class="capitalize block py-1 px-4 text-sm md:text-[18px]    rounded-sm   "
                             aria-current="page">home</a>
                     </li>
                     <li>
-                        <a routerLink="/products" routerLinkActive="nav-active font-semibold " 
+                        <a routerLink="/products" routerLinkActive="nav-active font-semibold "
                             class="capitalize block py-1 px-4  text-sm md:text-[18px]   rounded-sm   "
                             aria-current="page">products</a>
                     </li>
                     <li>
-                        <a routerLink="/allorders" routerLinkActive="nav-active font-semibold " 
+                        <a routerLink="/allorders" routerLinkActive="nav-active font-semibold "
                             class="capitalize block py-1 px-4    rounded-sm   "
                             aria-current="page">orders</a>
                     </li>
                     <li>
-                        <a routerLink="/about" routerLinkActive="nav-active font-semibold " 
+                        <a routerLink="/about" routerLinkActive="nav-active font-semibold "
                             class="capitalize block py-1 px-4    rounded-sm   "
                             aria-current="page">about us</a>
                     </li>
                     <li>
-                        <a routerLink="/blog" routerLinkActive="nav-active font-semibold " 
+                        <a routerLink="/blog" routerLinkActive="nav-active font-semibold "
                             class="capitalize block py-1 px-4 rounded-sm   "
                             aria-current="page">blog</a>
                     </li>
@@ -42,17 +42,17 @@
                 @if(!isLogin){
                     <div class="flex flex-row gap-5 main-color mb-3">
                         <li>
-                            <a routerLink="/login" routerLinkActive=" text-white main-color-bg" 
+                            <a routerLink="/login" routerLinkActive=" text-white main-color-bg"
                                 class=" capitalize block py-1.5 px-3 md:py-2 md:px-10   rounded-full  font-medium  hover:bg-[#8B5E35] hover:text-white border-[#8B5E35] transition-all duration-[500ms] border"
                                 aria-current="page">login</a>
                         </li>
                         <li>
-                            <a routerLink="/register" routerLinkActive=" text-white main-color-bg" 
+                            <a routerLink="/register" routerLinkActive=" text-white main-color-bg"
                                 class="capitalize block py-1.5 px-3 md:py-2 md:px-10   rounded-full  font-medium hover:bg-[#8B5E35] hover:text-white border-[#8B5E35] transition-all duration-[500ms] border"
                                 aria-current="page">sign up</a>
                         </li>
                     </div>
-                }@else {   
+                }@else {
                     <div class="flex flex-row align-items-center gap-9 mb-3 md:mt-5">
                         <li>
                             <a role="button" routerLink="/wishlist" class=" pt-1 main-color relative capitalize block text-2xl rounded-sm"aria-current="page">
@@ -60,29 +60,29 @@
                             </a>
                         </li>
                         <li>
-                        <a role="button" routerLink="/cart" routerLinkActive=" " 
+                        <a role="button" routerLink="/cart" routerLinkActive=" "
                             class="relative capitalize block  text-2xl  rounded-sm pt-1  "
                             aria-current="page">
                             <i class="fa-solid fa-cart-shopping main-color md:pt-1"></i>
                             @if(cartService.cartItemsNum() !== 0){
                                 <span class=" text-xs font-medium me-auto mb-auto px-1.5  rounded-full text-[#8B5E35] bg-[#e0b53f] absolute top-0 left-0">{{cartService.cartItemsNum()}}</span>
                             }
-            
+
                         </a>
-                        </li>   
+                        </li>
                         <li>
                             <a role="button" (click)="showAlert()"
-                                class="capitalize block main-color pt-2 rounded-sm   "
+                                class="capitalize block main-color pt-1.5 rounded-sm   "
                                 aria-current="page"><i class="fa-solid fa-right-from-bracket text-2xl   "></i></a>
-                        </li>   
+                        </li>
                     </div>
                 }
-    
+
             </ul>
             </div>
             @if(isLogin){
                 <button  data-collapse-toggle="navbar-default" type="button"
-                class="ms-0 inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden  focus:outline-none focus:ring-0  text-slate-600"
+                class="ms-0 inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden  focus:outline-none focus:ring-0  main-color mb-0"
                 aria-controls="navbar-default" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">

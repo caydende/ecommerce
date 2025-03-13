@@ -117,7 +117,7 @@ body {
 [type=radio]:checked{
   background-image: none !important;
   color: #8B5E35;
-  
+
 }
 .sec-head{
   font-family: 'Hedvig Letters Serif', serif;
@@ -133,28 +133,18 @@ body {
   color: #090F41;
 }
 ::-webkit-scrollbar {
-  width: 0.6rem; 
-  height: 0.6rem; 
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #8B5E35, #ff7300);
+  background: linear-gradient(45deg, #8B5E35, #ec8b30);
   border-radius: 10px;
-  transition: background 3s ease-in-out;
-  -webkit-transition: background 3s ease-in-out;
-  -moz-transition: background 3s ease-in-out;
-  -ms-transition: background 3s ease-in-out;
-  -o-transition: background 3s ease-in-out;
-}
-
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #8b5035, #ff5100);
 }
 
 
 ::-webkit-scrollbar-track {
-  background: #222222a9; 
+  background: #222222a9;
 }
 
 
