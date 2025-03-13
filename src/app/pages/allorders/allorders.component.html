@@ -20,7 +20,7 @@
                     <span class="font-medium text-lg ">Email Address : <span class="text-[16px]">{{order.user.email}}</span></span>
                     <span class="font-medium text-lg capitalize">phone number : <span class="text-[16px]">{{order.user.phone}}</span></span>
                 </div>
-                <div class="grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4   shadow-md shadow-[#c9996c] border rounded-lg  border-[#8B5E35]" >
+                <div class="grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6  shadow-md shadow-[#c9996c] border rounded-lg  border-[#8B5E35]" >
                     @for ( prod of order.cartItems ; track prod.product.id){
                     <div
                         class="scale-90 mx-auto card  max-w-[275px]   border-gray-200 rounded-xl shadow-lg shadow-[#c9996c] bg-white ">
@@ -57,7 +57,12 @@
                                         class="text-gray-300 line-through text-lg font-semibold"> {{prod.price * 2 | currency: 'EGP'}}
                                     </span>
                                 </div>
+                                <div class="flex flex-col"> 
                                 <span class=" text-lg font-semibold main-color capitalize">amount: {{prod.count}}</span>
+
+                                    <span class="text-sm font-semibold main-color capitalize">price: {{prod.price*prod.count | currency: 'EGP'}} 
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

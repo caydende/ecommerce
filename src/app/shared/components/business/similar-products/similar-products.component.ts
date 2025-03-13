@@ -110,6 +110,11 @@ export class SimilarProductsComponent implements OnInit {
 
   updateGridCols(): void {
     const width = window.innerWidth;
-    this.gridCols.set(width >= 1024 ? 4 : width >= 768 ? 3 : 2);
+    this.gridCols.set(
+      width >= 1536 ? 6 :  // 2xl (1536px and above)
+      width >= 1280 ? 5 :  // xl (1280px and above)
+      width >= 1024 ? 4 :  // lg (1024px and above)
+      width >= 768 ? 3 : 2 // md (768px and above), otherwise 2
+    );
   }
 }

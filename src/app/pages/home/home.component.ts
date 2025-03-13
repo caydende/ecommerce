@@ -146,6 +146,11 @@ export class HomeComponent implements OnInit {
 
   updateGridCols(): void {
     const width = window.innerWidth;
-    this.gridcols.set(width >= 1024 ? 4 : width >= 768 ? 3 : 2);
+    this.gridcols.set(
+      width >= 1536 ? 6 :  
+      width >= 1280 ? 5 :  
+      width >= 1024 ? 4 : 
+      width >= 768 ? 3 : 2 
+    );
   }
 }

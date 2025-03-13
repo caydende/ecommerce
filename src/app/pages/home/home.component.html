@@ -157,7 +157,7 @@
         <h3 class="sec-head1 capitalize mb-4 mx-auto">Grab Them Before They're Gone!</h3>
       </div>
 
-      <div class="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mx-16">
+      <div class="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 md:mx-16">
           @for ( prod of products().slice(0,gridcols()) ; track prod.id){
             <div class="scale-90 mx-auto card  max-w-[275px]   border-gray-200 rounded-xl shadow-lg shadow-[#c9996c] bg-white " >
               <div class="rounded-xl overflow-hidden relative">
@@ -254,8 +254,8 @@
         <a class="py-1.5 px-3 sm:px-5 text-lg cursor-pointer rounded-full  " [ngClass]="{'bg-[#8B5E35] text-white': activeCategorySwap()=== 'Women'}" (click)="productsCategorySwap('Women')">women</a>
         <a class="py-1.5 px-3 sm:px-5 text-lg cursor-pointer rounded-full  " [ngClass]="{'bg-[#8B5E35] text-white': activeCategorySwap() === 'Electronic'}" (click)="productsCategorySwap('Electronic')">electronics</a>
       </div>
-      <div class="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mx-16">
-          @for ( prod of productDisplayMini().slice(gridcols2()-1,gridcols2()+3) ; track prod.id){
+      <div class="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5 2xl:grid-cols-6 md:mx-16">
+          @for ( prod of productDisplayMini().slice(0,gridcols()) ; track prod.id){
             <div class="scale-90 mx-auto card  max-w-[275px]   border-gray-200 rounded-xl shadow-lg shadow-[#c9996c] bg-white " >
               <div class="rounded-xl overflow-hidden relative">
                 @for (prodWish of userWishlist(); track prodWish._id) {
@@ -329,7 +329,7 @@
         <h3 class="sec-head capitalize mb-2 mx-auto">top products</h3>
         <h3 class="sec-head1 capitalize mb-4 mx-auto">top picks for you!</h3>
       </div>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mx-16">
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5 2xl:grid-cols-6  md:mx-16">
         @for (prod of products().slice(0, gridcols() * 2); track prod.id) {
           <div class="scale-90 mx-auto card max-w-[275px] border-gray-200 rounded-xl shadow-lg shadow-[#c9996c] bg-white">
             <div class="rounded-xl overflow-hidden relative">
@@ -452,7 +452,7 @@
         <div>
           <swiper-container
             style="--swiper-navigation-color: #8B5E35 ; --swiper-pagination-color: #8B5E35;--swiper-navigation-size: 32px"
-              loop="true" free-mode="true" [attr.slides-per-view] ="gridcols()-1"
+              loop="true" free-mode="true" [attr.slides-per-view] ="gridcols()-2"
               class=" mySwiper testmonial-swiper !bg-transparent" navigation="true">
               <swiper-slide class="hover:scale-105 transition-all duration-500 ease-in-out  ">
                 <div class="bg-white text-start flex flex-col p-5 shadow-lg shadow-[#c9996c] rounded-lg gap-2 ">
