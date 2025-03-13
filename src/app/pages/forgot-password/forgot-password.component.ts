@@ -33,7 +33,9 @@ export class ForgotPasswordComponent {
 
   wrongInput(field:string ,message:string):void{
     if(!this.showWarning()){
-          this.toastrService.warning(message,'Fresh Cart')
+          this.toastrService.warning(message,'Fresh Cart',{
+            timeOut: 1500,
+          })
           if(this.step === 1){
             this.verifyEmail.get(field)?.markAsUntouched();
           }else if(this.step === 2){

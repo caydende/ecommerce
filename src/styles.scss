@@ -10,6 +10,19 @@
 .dis-block{
   display: block !important;
 }
+
+
+.toast-progress {
+  top: 0 !important;
+  bottom: unset !important;
+  height: 5px;
+  background-color: #000000 !important;
+  border-radius:12px ;
+  -webkit-border-radius:12px ;
+  -moz-border-radius:12px ;
+  -ms-border-radius:12px ;
+  -o-border-radius:12px ;
+}
 .owl-next{
   top: 50%;
   right: -48px;

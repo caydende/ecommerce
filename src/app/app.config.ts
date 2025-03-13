@@ -3,7 +3,7 @@ import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } fr
 import { provideRouter, withRouterConfig } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { provideToastr } from 'ngx-toastr';
+import { provideToastr, ToastrModule } from 'ngx-toastr';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
@@ -20,7 +20,12 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(),withInterceptors([loadingScreensInterceptor,errorInterceptor,headersInterceptor])),
     provideToastr(),
     provideAnimations(),
-    importProvidersFrom(NgxSpinnerModule ),
+    importProvidersFrom(NgxSpinnerModule , ToastrModule.forRoot({
+      timeOut: 1500,
+      progressBar: true ,
+      preventDuplicates:true,
+
+    }),),
     ]
 
 };

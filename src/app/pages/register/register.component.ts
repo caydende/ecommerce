@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
   
       })
     }else{
-      this.toastrService.warning("Please fill out this form correctly!!","Fresh Cart")
+      this.toastrService.warning("Please fill out this form correctly!!","Fresh Cart" )
     }
   }
 

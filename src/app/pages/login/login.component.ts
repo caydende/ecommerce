@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit{
 
   wrongInput(field:string ,message:string):void{
     if(!this.showWarning()){
-          this.toastrService.warning(message,'Fresh Cart')
+          this.toastrService.warning(message,'Fresh Cart' )
           this.login.get(field)?.markAsUntouched();
     }
   }
