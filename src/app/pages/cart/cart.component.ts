@@ -64,7 +64,7 @@ export class CartComponent implements OnInit {
     this.cartService.removeSpecificeProduct(itemId).subscribe({
       next: (res) => {
         if (res.status === 'success') {
-          this.toastrService.success("Item successfully removed", "Fresh Cart");
+          this.toastrService.success("Item successfully removed", "Trendify");
           this.cartDetails.set(res.data);
           this.cartService.cartItemsNum.update(value => value - 1);
         }
@@ -76,10 +76,10 @@ export class CartComponent implements OnInit {
     this.cartService.updateQuantity(updCount, id).subscribe({
       next: (res) => {
         if (this.removeToasterCount() > res.numOfCartItems) {
-          this.toastrService.success(`Item successfully removed`, "Fresh Cart");
+          this.toastrService.success(`Item successfully removed`, "Trendify");
           this.removeToasterCount.set(res.numOfCartItems);
         } else {
-          this.toastrService.success(`Item quantity successfully ${mess}`, "Fresh Cart");
+          this.toastrService.success(`Item quantity successfully ${mess}`, "Trendify");
         }
         this.cartDetails.set(res.data);
       }

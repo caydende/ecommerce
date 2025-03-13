@@ -6,7 +6,7 @@ import { ProductsService } from '../../../../core/services/products/products.ser
 import { IProduct } from '../../../interfaces/iproduct';
 import { ICart } from '../../../interfaces/icart';
 import { CurrencyPipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-similar-products',
@@ -19,6 +19,7 @@ export class SimilarProductsComponent implements OnInit {
   private readonly toastrService = inject(ToastrService);
   private readonly productsService = inject(ProductsService);
   private readonly wishlistService = inject(WishlistService);
+  private readonly router = inject(Router)
 
   products: WritableSignal<IProduct[]> = signal([]);
   cartDetails: WritableSignal<ICart> = signal({} as ICart);
@@ -57,7 +58,8 @@ export class SimilarProductsComponent implements OnInit {
       next: (res) => {
         localStorage.setItem('cartId' , res.cartId)
         this.addToCartLoader.set({ ...this.addToCartLoader(), [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify').onTap.subscribe(() => {
+          this.router.navigate(['/cart'])});;
         this.cartService.cartItemsNum.set(res.numOfCartItems);
         this.cartDetails.set(res.data);
       }
@@ -83,7 +85,8 @@ export class SimilarProductsComponent implements OnInit {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ ...this.wishCondition(), [prodId]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify').onTap.subscribe(() => {
+          this.router.navigate(['/wishlist'])});;
       }
     });
   }
@@ -94,7 +97,7 @@ export class SimilarProductsComponent implements OnInit {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ ...this.wishCondition(), [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify');
       }
     });
   }

@@ -1,8 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, NgZone, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { FooterComponent } from "../footer/footer.component";
 import { AuthService } from '../../core/services/auth/auth.service';
+
 
 @Component({
   selector: 'app-main-layout',
@@ -13,6 +14,8 @@ import { AuthService } from '../../core/services/auth/auth.service';
 })
 export class MainLayoutComponent implements OnInit{
   private readonly authService = inject(AuthService)
+
+
   getUserId(){
     this.authService.saveUserData()
   }

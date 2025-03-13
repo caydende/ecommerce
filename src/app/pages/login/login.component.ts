@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit{
 
   wrongInput(field:string ,message:string):void{
     if(!this.showWarning()){
-          this.toastrService.warning(message,'Fresh Cart' )
+          this.toastrService.warning(message,'Trendify' )
           this.login.get(field)?.markAsUntouched();
     }
   }
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit{
     if(this.login.valid){
       this.authService.sendLogin(this.login.value).subscribe({
         next : (res) => {
-          this.toastrService.success(res.message , "Fresh Cart")
+          this.toastrService.success(res.message , "Trendify")
           console.log(res);
           if(res.message === "success"){
 
@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit{
         },
       })
     }else{
-            this.toastrService.warning("Please fill out this form correctly!!","Fresh Cart")
+            this.toastrService.warning("Please fill out this form correctly!!","Trendify")
           }
   }
 

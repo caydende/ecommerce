@@ -75,13 +75,13 @@ export class CheckoutComponent implements OnInit {
             if (res.status === "success") {
               this.cartService.cartItemsNum.set(0)
               this.router.navigate(["/home"]);
-              this.toastrService.success("Your order has been successfully placed", "Fresh Cart");
+              this.toastrService.success("Your order has been successfully placed", "Trendify");
             }
           }
         });
       }
     } else {
-      this.toastrService.info("Please complete the form before submitting", "Fresh Cart");
+      this.toastrService.info("Please complete the form before submitting", "Trendify");
     }
   }
 
@@ -115,7 +115,7 @@ export class CheckoutComponent implements OnInit {
 
   wrongInput(field: string, message: string): void {
     if (!this.showWarning()) {
-      this.toastrService.warning(message, 'Fresh Cart');
+      this.toastrService.warning(message, 'Trendify');
       this.checkOutForm.get(field)?.markAsUntouched();
     }
   }

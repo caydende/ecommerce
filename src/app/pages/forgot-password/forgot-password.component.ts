@@ -33,7 +33,7 @@ export class ForgotPasswordComponent {
 
   wrongInput(field:string ,message:string):void{
     if(!this.showWarning()){
-          this.toastrService.warning(message,'Fresh Cart',{
+          this.toastrService.warning(message,'Trendify',{
             timeOut: 1500,
           })
           if(this.step === 1){
@@ -75,7 +75,7 @@ export class ForgotPasswordComponent {
 
           console.log(res);
           if (res.statusMsg === 'success') {
-            this.toastrService.success("A code is sent to Your email " , "Fresh Cart")
+            this.toastrService.success("A code is sent to Your email " , "Trendify")
             this.step = 2;
           }
         },
@@ -90,7 +90,7 @@ export class ForgotPasswordComponent {
 
           console.log(res);
           if (res.status === 'Success') {
-            this.toastrService.success("Your code has been successfully verified" , "Fresh Cart")
+            this.toastrService.success("Your code has been successfully verified" , "Trendify")
             this.step = 3;
           }
         },
@@ -103,7 +103,7 @@ export class ForgotPasswordComponent {
     if (this.resetPassword.valid) {
       this.authService.resetPassword(this.resetPassword.value).subscribe({
         next: (res: any) => {
-          this.toastrService.success("Your password has been successfully changed"  , "Fresh Cart")
+          this.toastrService.success("Your password has been successfully changed"  , "Trendify")
             console.log(res);
             localStorage.setItem('authToken', res.token);
             this.authService.saveUserData();

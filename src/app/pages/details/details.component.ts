@@ -1,6 +1,6 @@
 import { ProductsService } from './../../core/services/products/products.service';
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../../core/services/cart/cart.service';
@@ -20,6 +20,7 @@ export class DetailsComponent implements OnInit {
   private readonly cartService = inject(CartService);
   private readonly wishlistService = inject(WishlistService);
   private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router)
 
   itemsNumber: WritableSignal<number> = signal(1);
   detailsProd: WritableSignal<IProduct> = signal({} as IProduct);
@@ -73,7 +74,8 @@ export class DetailsComponent implements OnInit {
         localStorage.setItem('cartId' , res.cartId)
         this.cartService.updateQuantity(addedNumber, id).subscribe();
         this.addToCartLoader.set({ [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify').onTap.subscribe(() => {
+          this.router.navigate(['/cart'])});;
         this.cartService.cartItemsNum.set(res.numOfCartItems);
       }
     });
@@ -97,7 +99,8 @@ export class DetailsComponent implements OnInit {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ [prodId]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify').onTap.subscribe(() => {
+          this.router.navigate(['/wishlist'])});
       }
     });
   }
@@ -108,7 +111,7 @@ export class DetailsComponent implements OnInit {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify');
       }
     });
   }
@@ -120,14 +123,14 @@ export class DetailsComponent implements OnInit {
       } else {
         this.toastrService.warning(
           `We only have ${this.detailsProd()?.quantity} of this product`,
-          'Fresh Cart'
+          'Trendify'
         );
       }
     } else {
       if (this.itemsNumber() > 1) {
         this.itemsNumber.set(this.itemsNumber() - 1);
       } else {
-        this.toastrService.warning("You can't go below one", 'Fresh Cart');
+        this.toastrService.warning("You can't go below one", 'Trendify');
       }
     }
   }

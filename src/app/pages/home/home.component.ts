@@ -8,7 +8,6 @@ import { ToastrService } from 'ngx-toastr';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { signal } from '@angular/core';
 import { IProduct } from '../../shared/interfaces/iproduct';
-import { ICategory } from '../../shared/interfaces/icategory';
 
 @Component({
   selector: 'app-home',
@@ -40,7 +39,7 @@ export class HomeComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
   private readonly cartService = inject(CartService);
   private readonly wishlistService = inject(WishlistService);
-
+  private readonly router = inject(Router)
   
 
   getAllProductsData() {
@@ -58,7 +57,8 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         localStorage.setItem('cartId' , res.cartId)
         this.addToCartLoader.set({ [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify').onTap.subscribe(() => {
+          this.router.navigate(['/cart'])});
         this.cartService.cartItemsNum.set(res.numOfCartItems);
       },
     });
@@ -82,7 +82,8 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ [prodId]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify').onTap.subscribe(() => {
+          this.router.navigate(['/wishlist'])});;
       },
     });
   }
@@ -93,7 +94,7 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify');
       },
     });
   }

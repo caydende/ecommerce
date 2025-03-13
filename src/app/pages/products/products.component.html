@@ -168,14 +168,13 @@
 
             <div class="flex justify-center items-center gap-4 mt-8 self-center" >
                 <button (click)="previousPage()" 
-                        [disabled]="currentPage() === 1" 
+                        [disabled]="currentPage() === 1"
                         class="px-4 py-2 bg-[#8B5E35] text-white rounded-lg  transition-all duration-500 ease-in-out border border-[#8B5E35] hover:text-[#8B5E35] hover:bg-white"><i class="fa-solid fa-angle-left text-xl pt-1"></i></button>
                 
                 <span class="font-medium text-lg">Page {{currentPage()}} of {{totalPages}}</span>
 
                 <button (click)="nextPage()" 
-                        [disabled]="currentPage() >= totalPages" 
-                        class="px-4 py-2 bg-[#8B5E35] text-white rounded-lg transition-all duration-500 ease-in-out border border-[#8B5E35] hover:text-[#8B5E35] hover:bg-white"><i class="fa-solid fa-angle-right text-xl pt-1"></i></button>
+                        [disabled]="currentPage() >= totalPages" class=" px-4 py-2 bg-[#8B5E35] text-white rounded-lg transition-all duration-500 ease-in-out border border-[#8B5E35] hover:text-[#8B5E35] hover:bg-white"><i class="fa-solid fa-angle-right text-xl pt-1"></i></button>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@ import { CartService } from '../../core/services/cart/cart.service';
 import { ProductsService } from '../../core/services/products/products.service';
 import { ToastrService } from 'ngx-toastr';
 import { IProduct } from '../../shared/interfaces/iproduct';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -15,7 +15,7 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class WishlistComponent {
   private readonly toastrService = inject(ToastrService);
-  private readonly productsService = inject(ProductsService);
+  private readonly router = inject(Router);
   private readonly cartService = inject(CartService);
   private readonly wishlistService = inject(WishlistService);
 
@@ -39,7 +39,8 @@ export class WishlistComponent {
       next: (res) => {
         localStorage.setItem('cartId' , res.cartId)
         this.addToCartLoader.set({ ...this.addToCartLoader(), [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify').onTap.subscribe(() => {
+          this.router.navigate(['/cart'])});;
         this.cartService.cartItemsNum.set(res.numOfCartItems);
       }
     });
@@ -65,7 +66,7 @@ export class WishlistComponent {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ ...this.wishCondition(), [prodId]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify');
       }
     });
   }
@@ -76,7 +77,7 @@ export class WishlistComponent {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ ...this.wishCondition(), [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify');
       }
     });
   }

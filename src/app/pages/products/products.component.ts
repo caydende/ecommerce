@@ -6,7 +6,7 @@ import { ProductsService } from '../../core/services/products/products.service';
 import { CartService } from '../../core/services/cart/cart.service';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 import { CommonModule, CurrencyPipe, NgClass } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -19,6 +19,7 @@ export class ProductsComponent {
   private readonly productsService = inject(ProductsService);
   private readonly cartService = inject(CartService);
   private readonly wishlistService = inject(WishlistService);
+  private readonly router = inject(Router)
 
   currentPage = signal(1);
   itemsPerPage = signal(8);
@@ -53,6 +54,7 @@ export class ProductsComponent {
   nextPage(): void {
     if (this.currentPage() < this.totalPages) {
       this.currentPage.set(this.currentPage() + 1);
+      console.log(window.scrollY)
     }
   }
 
@@ -68,10 +70,10 @@ export class ProductsComponent {
 
     if (minPrice > maxPrice) {
       maxPrice = minPrice + 1;
-      this.toastrService.warning('Please enter a valid price range!', 'Fresh Cart');
+      this.toastrService.warning('Please enter a valid price range!', 'Trendify');
     } else if (maxPrice < minPrice) {
       minPrice = maxPrice - 1;
-      this.toastrService.warning('Please enter a valid price range!', 'Fresh Cart');
+      this.toastrService.warning('Please enter a valid price range!', 'Trendify');
     }
 
     this.productDisplayMini.set(this.products().filter(product => product.price >= minPrice && product.price <= maxPrice));
@@ -101,7 +103,8 @@ export class ProductsComponent {
       next: (res) => {
         localStorage.setItem('cartId' , res.cartId)
         this.addToCartLoader.set({ ...this.addToCartLoader(), [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify').onTap.subscribe(() => {
+          this.router.navigate(['/cart'])});;
         this.cartService.cartItemsNum.set(res.numOfCartItems);
       }
     });
@@ -125,7 +128,8 @@ export class ProductsComponent {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ ...this.wishCondition(), [prodId]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify').onTap.subscribe(() => {
+          this.router.navigate(['/wishlist'])});;
       }
     });
   }
@@ -136,7 +140,7 @@ export class ProductsComponent {
       next: (res) => {
         this.getUserWishlist();
         this.wishCondition.set({ ...this.wishCondition(), [id]: false });
-        this.toastrService.success(res.message, 'Fresh Cart');
+        this.toastrService.success(res.message, 'Trendify');
       }
     });
   }
@@ -150,6 +154,7 @@ export class ProductsComponent {
     this.activeCategorySwap.set(activeSwap);
     this.getSpecificCategoryType(activeSwap === 'All' ? '' : activeSwap);
   }
+
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {

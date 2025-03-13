@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
     if(this.register.valid ){
       this.authService.sendRegister(this.register.value).subscribe({
         next : (res) => {
-          this.toastrService.success(res.message , "Fresh Cart")
+          this.toastrService.success(res.message , "Trendify")
           console.log(res);
           if(res.message === "success"){
 
@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
   
       })
     }else{
-      this.toastrService.warning("Please fill out this form correctly!!","Fresh Cart" )
+      this.toastrService.warning("Please fill out this form correctly!!","Trendify" )
     }
   }
 
@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
 
   wrongInput(field:string ,message:string):void{
     if(!this.showWarning()){
-          this.toastrService.warning(message,'Fresh Cart')
+          this.toastrService.warning(message,'Trendify')
           this.register.get(field)?.markAsUntouched(); 
     }
 

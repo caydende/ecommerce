@@ -24,7 +24,8 @@ export const appConfig: ApplicationConfig = {
       timeOut: 1500,
       progressBar: true ,
       preventDuplicates:true,
-
+      resetTimeoutOnDuplicate:true,
+      extendedTimeOut:1,
     }),),
     ]
 
