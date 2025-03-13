@@ -16,7 +16,7 @@ export class ForgotPasswordComponent {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   private readonly toastrService = inject(ToastrService)
-  step = 1;
+  step = 3;
 
   shakeFields: { [key: string]: boolean } = {};
   colorFields: { [key: string]: boolean } = {};
