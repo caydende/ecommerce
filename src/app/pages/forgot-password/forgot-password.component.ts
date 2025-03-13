@@ -16,7 +16,7 @@ export class ForgotPasswordComponent {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   private readonly toastrService = inject(ToastrService)
-  step = 3;
+  step = 1;
 
   shakeFields: { [key: string]: boolean } = {};
   colorFields: { [key: string]: boolean } = {};
@@ -26,8 +26,8 @@ export class ForgotPasswordComponent {
 
   changVisible(btn: string): void {
     this.fieldTextType.update(state => ({
-      ...state,  
-      [btn]: !state[btn] 
+      ...state,
+      [btn]: !state[btn]
     }));
   }
 
@@ -35,11 +35,11 @@ export class ForgotPasswordComponent {
     if(!this.showWarning()){
           this.toastrService.warning(message,'Fresh Cart')
           if(this.step === 1){
-            this.verifyEmail.get(field)?.markAsUntouched(); 
+            this.verifyEmail.get(field)?.markAsUntouched();
           }else if(this.step === 2){
-            this.verifyCode.get(field)?.markAsUntouched(); 
+            this.verifyCode.get(field)?.markAsUntouched();
           }else{
-            this.resetPassword.get(field)?.markAsUntouched(); 
+            this.resetPassword.get(field)?.markAsUntouched();
           }
 
     }
@@ -72,7 +72,7 @@ export class ForgotPasswordComponent {
         next: (res: any) => {
 
           console.log(res);
-          if (res.statusMsg === 'success') {          
+          if (res.statusMsg === 'success') {
             this.toastrService.success("A code is sent to Your email " , "Fresh Cart")
             this.step = 2;
           }
@@ -87,7 +87,7 @@ export class ForgotPasswordComponent {
         next: (res: any) => {
 
           console.log(res);
-          if (res.status === 'Success') {          
+          if (res.status === 'Success') {
             this.toastrService.success("Your code has been successfully verified" , "Fresh Cart")
             this.step = 3;
           }
@@ -116,11 +116,11 @@ export class ForgotPasswordComponent {
     const hasError = formControls.some(form => form.get(field)?.errors && form.get(field)?.touched);
 
     if (hasError) {
-      this.shakeFields[field] = true;  
-      this.colorFields[field] = true; 
+      this.shakeFields[field] = true;
+      this.colorFields[field] = true;
       this.showWarning.set(false)
-      setTimeout(() => this.shakeFields[field] = false, 500); 
-      setTimeout(() => this.colorFields[field] = false, 1500); 
+      setTimeout(() => this.shakeFields[field] = false, 500);
+      setTimeout(() => this.colorFields[field] = false, 1500);
     }
   }
 }
