@@ -197,8 +197,8 @@
             }"
             class="text-xs sm:text-sm text-[18px] focus:border-[#8B5E35] border border-[#8B5E35] rounded-full block w-full placeholder:text-[15px] p-2.5 pl-10  focus:ring-0 "
           />
-          <div class="p-5 pe-10 rounded-r-full absolute right-0 top-[50%] transform -translate-y-1/2  bg-white border-[#8B5E35] border">
-            <i (click)="changVisible('password')"
+          <div (click)="changVisible('password')" class="cursor-pointer p-5 pe-10 rounded-r-full absolute right-0 top-[50%] transform -translate-y-1/2  bg-white border-[#8B5E35] border">
+            <i
             [ngClass]="{
                 'fa-eye-slash': !fieldTextType()['password'],
                 'fa-eye': fieldTextType()['password']
@@ -249,8 +249,8 @@
             }"
             class="text-xs sm:text-sm md:text-[18px] focus:border-[#8B5E35] border border-[#8B5E35] rounded-full block w-full placeholder:text-[15px] p-2.5 pl-10 focus:ring-0"
           />
-          <div class="p-5 pe-10 rounded-r-full absolute right-0 top-[50%] transform -translate-y-1/2  bg-white border-[#8B5E35] border">
-            <i (click)="changVisible('rePassword')"
+          <div (click)="changVisible('rePassword')" class="cursor-pointer  p-5 pe-10 rounded-r-full absolute right-0 top-[50%] transform -translate-y-1/2  bg-white border-[#8B5E35] border">
+            <i
             [ngClass]="{
                 'fa-eye-slash': !fieldTextType()['rePassword'],
                 'fa-eye': fieldTextType()['rePassword']
