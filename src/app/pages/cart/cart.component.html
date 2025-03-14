@@ -4,87 +4,91 @@
         <h2 class="text-[#151411] font-semibold text-start text-4xl capitalize">cart</h2>
         <span class="main-color text-xl font-medium">{{removeToasterCount() }}  items</span>
     </div>
-
-    <!-- <button (click)="showAlert('Clear cart!' , 'Your cart is cleared!' , false , '')" class="font-medium bg-red-700 py-2 me-auto m-3 ms-4     px-4 rounded-lg block w-[120px] text-slate-100">Clear cart</button> -->
-    <div class="grid md:grid-cols-3 gap-10 ">
-      <div class="md:col-span-2 grid ">
-        @for(product of cartDetails().products ;track product._id ){
-          <div class="ms-0  m-2 bg-white border  pe-5 rounded-lg">
-
-              <div class=" grid gap-6 md:gap-0 md:grid-cols-2 justify-between">
-                  <div class="grid grid-cols-1 sm:grid-cols-2  gap-3">
-                      <div >
-                          <img [src]="product.product.imageCover" class="hover:scale-105  transition-all duration-500 ease-in-out w-[160px] h-[160px] rounded-lg me-5  object-cover shadow-md  shadow-[#8B5E35] " [alt]="product.product.title">
-                      </div>
-                      <div class="flex justify-between items-center">
-                          <div class="capitalize text-start">
-                              <h4 class="text-xl font-medium main-txt">{{product.product.title}}</h4>
-
-                              <div class="flex flex-row items-center justify-center gap-6">
-                                  <div class="flex gap-10 text-lg px-2 py-2 main-txt border border-[#A2A3B1] rounded-lg mt-3" >
-                                          <button (click)="updateQuantity(product.count -1 , product.product.id , 'decreased')"><i class="fa-solid fa-minus "></i> </button>
-                                          <span>{{product.count}}</span>
-                                          <button (click)="updateQuantity(product.count +1 , product.product.id, 'increased')"><i class="fa-solid fa-plus "></i></button>
-                                  </div>
-                                  <button (click)="showAlert('Remove item!' , 'The item is removed!' , true , product.product._id)" class="mt-3 main-color text-xl"><i class="fa-solid fa-trash "></i></button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="grid grid-cols-1 items-start main-txt font-semibold text-lg text-end">
-                      <span class="line-through sec-txt self-end">{{product.price * product.count *2 | currency : "EGP"}}</span>
-                      <span>{{product.price * product.count | currency : "EGP"}}</span>
-                  </div>
-              </div>
-
-          </div>
-      }
-      </div>
-      <div class="md:col-span-1 flex h-fit flex-col text-start bg-white border rounded-lg ms-0 gap-7 m-2 p-8">
-        <h4 class="capitalize main-txt font-medium text-2xl ">order summary</h4>
-        <div class="flex flex-col gap-6 border-b border-[#D1D1D8] pb-8">
-          <div class="main-txt flex justify-between">
-            <span class="capitalize">price</span>
-            <span>{{cartDetails().totalCartPrice * 2 | currency: "EGP"}}</span>
-          </div>
-          <div class="main-txt flex justify-between">
-            <span class="capitalize">discount</span>
-            <span>{{cartDetails().totalCartPrice | currency: "EGP"}}</span>
-          </div>
-          <div class="main-txt flex justify-between">
-            <span class="capitalize">shipping</span>
-            <span class="capitalize main-color">free</span>
-          </div>
-          <div class="main-txt flex justify-between">
-            <span class="capitalize">coupon applied</span>
-            <span>{{0 | currency: "EGP"}}</span>
-          </div>
+    @if(cartDetails()){
+      <div class="grid md:grid-cols-3 gap-10 ">
+        <div class="sm:col-span-2 grid md:h-40 ">
+          @for(product of cartDetails().products ;track product._id ){
+            <div class="ms-0  m-2 bg-white border p-5 md:pe-5 rounded-lg">
+  
+                <div class=" grid gap-6 md:gap-0 md:grid-cols-2 justify-center">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 justify-center gap-3">
+                        <div>
+                            <img [src]="product.product.imageCover" class="hover:scale-105  transition-all duration-500 ease-in-out w-[160px] h-[160px] rounded-lg me-5  object-cover shadow-md  shadow-[#8B5E35] " [alt]="product.product.title">
+                        </div>
+                        <div class="flex justify-center md:justify-between items-center">
+                            <div class="capitalize text-start">
+                                <h4 class="text-xl font-medium main-txt">{{product.product.title}}</h4>
+  
+                                <div class="flex flex-row items-center justify-center gap-3">
+                                    <div class="flex gap-10 text-lg px-2 py-2 main-txt border border-[#A2A3B1] rounded-lg mt-3" >
+                                            <button (click)="updateQuantity(product.count -1 , product.product.id , 'decreased')"><i class="fa-solid fa-minus "></i> </button>
+                                            <span>{{product.count}}</span>
+                                            <button (click)="updateQuantity(product.count +1 , product.product.id, 'increased')"><i class="fa-solid fa-plus "></i></button>
+                                    </div>
+                                    <button (click)="showAlert('Remove item!' , 'The item is removed!' , true , product.product._id)" class="mt-3 main-color text-xl"><i class="fa-solid fa-trash "></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 text-center md:text-end items-start main-txt font-semibold text-lg ">
+                        <span class="line-through sec-txt self-end">{{product.price * product.count *2 | currency : "EGP"}}</span>
+                        <span>{{product.price * product.count | currency : "EGP"}}</span>
+                    </div>
+                </div>
+  
+            </div>
+        }
         </div>
-        <div class="flex flex-col gap-5">
-          <div class="text-[#17183B] flex justify-between">
-            <span class="uppercase font-semibold">total</span>
-            <div class="grid grid-cols-1 gap-3 ">
-              <span class="line-through sec-txt">{{cartDetails().totalCartPrice * 2 | currency: "EGP"}}</span>
+        <div class="md:col-span-1 flex h-fit flex-col text-start bg-white border rounded-lg ms-0 gap-7 m-2 p-8">
+          <h4 class="capitalize main-txt font-medium text-2xl ">order summary</h4>
+          <div class="flex flex-col gap-6 border-b border-[#D1D1D8] pb-8">
+            <div class="main-txt flex justify-between">
+              <span class="capitalize">price</span>
+              <span>{{cartDetails().totalCartPrice * 2 | currency: "EGP"}}</span>
+            </div>
+            <div class="main-txt flex justify-between">
+              <span class="capitalize">discount</span>
               <span>{{cartDetails().totalCartPrice | currency: "EGP"}}</span>
             </div>
+            <div class="main-txt flex justify-between">
+              <span class="capitalize">shipping</span>
+              <span class="capitalize main-color">free</span>
+            </div>
+            <div class="main-txt flex justify-between">
+              <span class="capitalize">coupon applied</span>
+              <span>{{0 | currency: "EGP"}}</span>
+            </div>
           </div>
-          <div class="text-[#17183B] flex justify-between ">
-            <span class="capitalize font-medium">estimated delivery by</span>
-            <span class="font-semibold">{{ currentDate()  | date: 'dd MMM, y' }}</span>
+          <div class="flex flex-col gap-5">
+            <div class="text-[#17183B] flex justify-between">
+              <span class="uppercase font-semibold">total</span>
+              <div class="grid grid-cols-1 gap-3 ">
+                <span class="line-through sec-txt">{{cartDetails().totalCartPrice * 2 | currency: "EGP"}}</span>
+                <span>{{cartDetails().totalCartPrice | currency: "EGP"}}</span>
+              </div>
+            </div>
+            <div class="text-[#17183B] flex justify-between ">
+              <span class="capitalize font-medium">estimated delivery by</span>
+              <span class="font-semibold">{{ currentDate()  | date: 'dd MMM, y' }}</span>
+            </div>
           </div>
+          <div class="relative">
+          <input type="text" placeholder="coupon code" class="placeholder:capitalize placeholder:ps-2 h-[56px] rounded-xl w-full border-[#C0C0C0] focus:ring-0 focus:border-[#C0C0C0] mb-4 xl:mb-0">
+          <button class="hover:bg-white transition-all duration-500 ease-in-out hover:scale-105 hover:text-[#8B5E35] border border-[#8B5E35]  capitalize px-4 py-2 text-white main-color-bg xl:absolute rounded-lg xl:right-0 xl:me-3 xl:top-1/2 xl:translate-y-[-50%] w-1/2 xl:w-fit">apply</button>
+  
+          </div>
+          <button class="hover:bg-white transition-all duration-500 ease-in-out hover:scale-105 hover:text-[#8B5E35] border border-[#8B5E35]  capitalize  text-white main-color-bg text-xl  rounded-full w-full py-3 mt-2" routerLink="/checkout">proceed to checkout</button>
         </div>
-        <div class="relative">
-        <input type="text" placeholder="coupon code" class="placeholder:capitalize placeholder:ps-2 h-[56px] rounded-xl w-full border-[#C0C0C0] focus:ring-0 focus:border-[#C0C0C0] mb-4 xl:mb-0">
-        <button class="hover:bg-white transition-all duration-500 ease-in-out hover:scale-105 hover:text-[#8B5E35] border border-[#8B5E35]  capitalize px-4 py-2 text-white main-color-bg xl:absolute rounded-lg xl:right-0 xl:me-3 xl:top-1/2 xl:translate-y-[-50%] w-1/2 xl:w-fit">apply</button>
-
-        </div>
-        <button class="hover:bg-white transition-all duration-500 ease-in-out hover:scale-105 hover:text-[#8B5E35] border border-[#8B5E35]  capitalize  text-white main-color-bg text-xl  rounded-full w-full py-3 mt-2" routerLink="/checkout">proceed to checkout</button>
+  
       </div>
-
-    </div>
+    }@else{
+      <h2 class="sec-head capitalize !text-5xl">
+        you doesn't have any orders yet!!
+      </h2>
+    }
 </div>
 <div class="mt-10">
-  <h3 class=" main-txt font-semibold text-[40px] capitalize text-start">similar products</h3>
+  <h3 class=" main-txt font-semibold text-[40px] capitalize text-start">more products</h3>
   <app-similar-products></app-similar-products>
 </div>
 </section>

@@ -17,7 +17,7 @@ export class AllordersComponent implements OnInit{
 
   private readonly ordersService = inject(OrdersService)
 
-  orders:WritableSignal<any> = signal(1)
+  orders:WritableSignal<any> = signal([])
   stars = new Array(5);
   halfStar(rating:number){
     rating = rating - Math.floor(rating)
