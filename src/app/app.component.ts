@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, inject, NgZone } from '@angular/core';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, inject, NgZone, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { FlowbiteService } from './core/services/flowbite/flowbite.service';
 import {NgxSpinnerModule} from 'ngx-spinner';
@@ -14,18 +14,14 @@ import { initFlowbite } from 'flowbite';
   styleUrl: './app.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit {
   private readonly flowbiteService = inject(FlowbiteService)
-  private readonly router = inject(Router)
-  private readonly ngZone = inject(NgZone);
 
 
-  ngAfterViewInit() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
+  ngOnInit() {
     this.flowbiteService.loadFlowbite((flowbite) => {
-      flowbite.initFlowbite();
-    })
-  }})}
+      initFlowbite();
+    });
+  }
   title = 'Ecommerce';
 }
